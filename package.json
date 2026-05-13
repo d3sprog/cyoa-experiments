@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.92.0",
+    "commander": "^14.0.3"
+  }
+}

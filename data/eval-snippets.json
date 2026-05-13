@@ -1,0 +1,1627 @@
+[
+  {
+    "id": 23,
+    "title": "Top medalists at Rio 2016",
+    "description": "Top medalists from Rio 2016 based on the number of gold medals. The snippet uses the pivot type provier to aggregate the data and shows a simple bar chart with the results.",
+    "chains": [
+      {
+        "provider": "olympics",
+        "steps": [
+          "olympics",
+          "filter data",
+          "Games is",
+          "Rio (2016)",
+          "then",
+          "group data",
+          "by Athlete",
+          "sum Gold",
+          "then",
+          "sort data",
+          "by Gold descending",
+          "then",
+          "paging",
+          "take(8)",
+          "get series",
+          "with key Athlete",
+          "and value Gold"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "title": "Top medalists from London 2012",
+    "description": "Top medalists from London 2012 games based on the number of gold medals. The snippet uses the pivot type provider to aggregate the data and shows a simple bar chart with the results.",
+    "chains": [
+      {
+        "provider": "olympics",
+        "steps": [
+          "olympics",
+          "filter data",
+          "Games is",
+          "London (2012)",
+          "then",
+          "group data",
+          "by Athlete",
+          "sum Gold",
+          "then",
+          "sort data",
+          "by Gold descending",
+          "then",
+          "paging",
+          "take(8)",
+          "get series",
+          "with key Athlete",
+          "and value Gold"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "title": "Number of distinct countries in Olympics",
+    "description": "Number of distinct countries competing in the Olympic games. The visualization shows that the number of distinct teams has been steadily growing since the beginning of the new Olympic games.",
+    "chains": [
+      {
+        "provider": "olympics",
+        "steps": [
+          "olympics",
+          "group data",
+          "by Games",
+          "average Year",
+          "count distinct Team",
+          "then",
+          "sort data",
+          "by Year",
+          "then",
+          "get series",
+          "with key Year",
+          "and value Team"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "title": "Olympic medals table by athlete",
+    "description": "Table showing top 10 athletes by the number of medals together with their team and discipline in which they compete. The sample creates a simple table and uses the pivot type provider for grouping.",
+    "chains": [
+      {
+        "provider": "olympics",
+        "steps": [
+          "olympics",
+          "group data",
+          "by Athlete",
+          "sum Gold",
+          "sum Silver",
+          "sum Bronze",
+          "concatenate values of Discipline",
+          "concatenate values of Team",
+          "then",
+          "sort data",
+          "by Gold descending",
+          "and by Silver descending",
+          "and by Bronze descending",
+          "then",
+          "paging",
+          "take(10)",
+          "get the data"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "title": "You Draw It: Carbon emissions of USA",
+    "description": "Can you guess how CO2 emissions changed between 2005 and 2010 if you only see data up to 2005? Inspired by the NYT \"You Draw It\" series, this demo lets you draw your prediction directly on a line chart.",
+    "chains": [
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "United States",
+          "Climate Change",
+          "CO2 emissions (kt)",
+          "take(10)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "title": "You Draw It: Olympic medals won by China",
+    "description": "After going down from 76 to 53, the number of Olympic medals won by china started rising in 1988. Can you guess the rest of the trend, including the Olympic games in Beijing? (Inspired by NYT's piece mapping Obama's legacy and using the D3 code shared by authors).",
+    "chains": [
+      {
+        "provider": "olympics",
+        "steps": [
+          "olympics",
+          "filter data",
+          "Team is",
+          "China",
+          "then",
+          "group data",
+          "by Games",
+          "average Year",
+          "count all",
+          "then",
+          "sort data",
+          "by Year",
+          "then",
+          "get series",
+          "with key Year",
+          "and value count"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "title": "You Guess: Population of top 6 countries of the world",
+    "description": "Inspired by the \"You Draw It\" visualisation from the New York Times, this demo lets you guess values in a bar chart. Can you correctly rank the 6 most populous countries in the world?",
+    "chains": [
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byYear",
+          "2012",
+          "All Indicators",
+          "Population, total",
+          "sortValues(true)",
+          "take(6)",
+          "shuffle()"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "title": "Top countries at Rio 2016",
+    "description": "Top countries from Rio 2016 based on the number of gold medals. The snippet uses the pivot type provider to aggregate the data and shows a simple bar chart with the results.",
+    "chains": [
+      {
+        "provider": "olympics",
+        "steps": [
+          "olympics",
+          "filter data",
+          "Games is",
+          "Rio (2016)",
+          "then",
+          "group data",
+          "by Team",
+          "sum Gold",
+          "then",
+          "sort data",
+          "by Gold descending",
+          "then",
+          "paging",
+          "take(8)",
+          "get series",
+          "with key Team",
+          "and value Gold"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "title": "Guess the number of Olympic teams",
+    "description": "This interactive visualization lets you guess the number of teams competing in the last 5 Olympic games. The initial values show the average number, so expect this to go down for some and up for others!",
+    "chains": [
+      {
+        "provider": "olympics",
+        "steps": [
+          "olympics",
+          "group data",
+          "by Year",
+          "count distinct Team",
+          "concatenate values of Games",
+          "then",
+          "sort data",
+          "by Year descending",
+          "then",
+          "paging",
+          "take(5)",
+          "sort data",
+          "by Year",
+          "then",
+          "get series",
+          "with key Games",
+          "and value Team"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "title": "Guess the number of Turing people",
+    "description": "The Alan Turing Institute hosts faculty fellows, research fellows, and PhD students from partner universities at its London offices. Can you guess how many people work in each category?",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "April 2017",
+          "People at the Turing in 2016/2017",
+          "get series",
+          "with key Role",
+          "and value Count"
+        ],
+        "hint": "Use data source from April 2017 named 'People at the Turing in 2016/2017'"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "title": "Guess the number of Turing people (2.)",
+    "description": "The Alan Turing Institute hosts a number of faculty fellows visiting from partner universities, research fellows and PhD students working at the London offices and a also welcomes visiting researchers. Guess how many of each are there! This version uses data from the turing.ac.uk website.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "May 2017",
+          "The Alan Turing Institute People (May 2017)",
+          "group data",
+          "by Role",
+          "count all",
+          "then",
+          "get series",
+          "with key Role",
+          "and value count"
+        ],
+        "hint": "Use data source from May 2017 named 'The Alan Turing Institute People (May 2017)'"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "title": "Guess the number of Turing people (3.)",
+    "description": "The Alan Turing Institute hosts a number of faculty fellows visiting from partner universities, research fellows and PhD students working at the London offices and a also welcomes visiting researchers. Guess how many of each are there! This version uses data from the turing.ac.uk website. (Corrected!)",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "May 2017",
+          "The Alan Turing Institute People (May 2017, corrected)",
+          "group data",
+          "by Role",
+          "count all",
+          "then",
+          "get series",
+          "with key Role",
+          "and value count"
+        ],
+        "hint": "Use data source from May 2017 named 'The Alan Turing Institute People (May 2017, corrected)'"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "title": "Cambridge Faculty Fellows",
+    "description": "A table showing Cambridge Faculty Fellows at the Alan Turing Institute, using data scraped from the turing.ac.uk website.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "May 2017",
+          "The Alan Turing Institute People (7 May 2017)",
+          "filter data",
+          "Position is",
+          "Faculty Fellow",
+          "and University is",
+          "Cambridge",
+          "then",
+          "get the data"
+        ],
+        "hint": "Use data source from May 2017 named 'The Alan Turing Institute People (7 May 2017)'"
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "title": "New Rio 2016 Golds",
+    "description": "Testing a new version of just the Rio data, which gives the right number of gold medals",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "May 2017",
+          "Rio 2016 Olympics",
+          "filter data",
+          "Games is",
+          "Rio (2016)",
+          "then",
+          "group data",
+          "by Event",
+          "and Discipline",
+          "and Team",
+          "and Gold",
+          "then",
+          "group data",
+          "by Team",
+          "sum Gold",
+          "then",
+          "sort data",
+          "by Gold descending",
+          "then",
+          "paging",
+          "take(8)",
+          "get series",
+          "with key Team",
+          "and value Gold"
+        ],
+        "hint": "Use data source from May 2017 named 'Rio 2016 Olympics'"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "title": "Top 10 Government Departments by 2015-16 Expenditure",
+    "description": "A demo of the UK Public Expenditure Statistical Analyses data showing the top 10 government departments by spending in 2015-16, with a breakdown of who is spending your money on what.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "May 2017",
+          "Central government own expenditure in budgets by departmental group (PESA 2016)",
+          "group data",
+          "by Department",
+          "sum 2015-16 Outturn",
+          "then",
+          "sort data",
+          "by 2015-16 Outturn descending",
+          "then",
+          "paging",
+          "take(10)",
+          "get series",
+          "with key Department",
+          "and value 2015-16 Outturn"
+        ],
+        "hint": "Use data source from May 2017 named 'Central government own expenditure in budgets by departmental group (PESA 2016)'"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "title": "Most viewed Turing videos on YouTube",
+    "description": "Top 10 videos from YouTube based on the number of views. This is based on the number of people who watched at least a bit of the video.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "May 2017",
+          "YouTube views by video",
+          "sort data",
+          "by Views descending",
+          "then",
+          "paging",
+          "take(10)",
+          "get series",
+          "with key Video title",
+          "and value Views"
+        ],
+        "hint": "Use data source from May 2017 named 'YouTube views by video'"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "title": "UK spending on tertiary education",
+    "description": "A minimal demo using the UK expenditure data service",
+    "chains": [
+      {
+        "provider": "expenditure",
+        "steps": [
+          "expenditure",
+          "byService",
+          "Education",
+          "bySubService",
+          "Tertiary education"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "title": "UK spending on tertiary education",
+    "description": "A minimal demo using the UK expenditure data service. Less misleading version with Y axis starting from zero.",
+    "chains": [
+      {
+        "provider": "expenditure",
+        "steps": [
+          "expenditure",
+          "byService",
+          "Education",
+          "bySubService",
+          "Tertiary education"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "title": "You Draw It: Carbon emissions of USA (new)",
+    "description": "Can you guess how the CO2 emissions have been changing between 2005 and 2010 if you see data between 2000 and 2005? Inspired by the fantastic \"You Draw It: What Got Better or Worse During Obama?s Presidency\" piece in NYT (see link). New version using The Gama composable visualizations library.",
+    "chains": [
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "United States",
+          "Climate Change",
+          "CO2 emissions (kt)",
+          "take(10)",
+          "sortKeys()"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "title": "GDP and Mark Spitz' medals",
+    "description": "This is a demo showing how to add markers to a youguess line chart. It shows US GDP per capita with the number of gold medals won by Mark Spitz. As you can see, there is a very strong connection between the two... not.",
+    "chains": [
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "United States",
+          "Economy & Growth",
+          "GDP per capita (current US$)"
+        ]
+      },
+      {
+        "provider": "olympics",
+        "steps": [
+          "olympics",
+          "filter data",
+          "Team is",
+          "United States",
+          "and Athlete is",
+          "Mark Spitz",
+          "then",
+          "group data",
+          "by Year",
+          "sum Gold",
+          "then",
+          "get series",
+          "with key Year",
+          "and value Gold"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "title": "Video views per date",
+    "description": "YouTube video views per date from the Alan Turing Institute YouTube channel.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "May 2017",
+          "YouTube Views per Date",
+          "get series",
+          "with key date",
+          "and value views"
+        ],
+        "hint": "Use data source from May 2017 named 'YouTube Views per Date'"
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "title": "Classification of the Functions of Government (COFOG)",
+    "description": "COFOG classifies government expenditure data by the purpose for which funds are used. It is developed by the Organisation for Economic Co-operation and Development (OECD).",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "May 2017",
+          "COFOG Structure",
+          "filter data",
+          "Service is",
+          "Social protection",
+          "then",
+          "get the data"
+        ],
+        "hint": "Use data source from May 2017 named 'COFOG Structure'"
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "title": "Compost: CO2 emissions line chart",
+    "description": "Simple visalization showing the CO2 emissions of China and USA using a new experimental compost library.",
+    "chains": [
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "United States",
+          "Climate Change",
+          "CO2 emissions (kt)"
+        ]
+      },
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "China",
+          "Climate Change",
+          "CO2 emissions (kt)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "title": "Compost: Top polluters bar chart",
+    "description": "Simple visualization showing top 8 polluters based on CO2 emissions. This illustrates new experimental charting library compost.",
+    "chains": [
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byYear",
+          "2010",
+          "Climate Change",
+          "CO2 emissions (kt)",
+          "sortValues(reverse=true)",
+          "take(8)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "title": "Unemployment in Italy",
+    "description": "Male and female unemployment in Italy in percentage of labor force since 80's",
+    "chains": [
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "Italy",
+          "Education",
+          "Unemployment, male (% of male labor force)"
+        ]
+      },
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "Italy",
+          "Education",
+          "Unemployment, female (% of female labor force)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "title": "You Draw It: United Kingdom CO2 emissions with axis labels",
+    "description": "This example shows how to add axis labels to youdraw.line chart. Some of the other options are not yet supported, but labels work as expected!",
+    "chains": [
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "United Kingdom",
+          "Climate Change",
+          "CO2 emissions (kt)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "title": "Guess the number of Olympic teams",
+    "description": "Guess the number of teams in Olympic games, using a locally uploaded version of the medal data.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "June 2017",
+          "Olympic medalists",
+          "group data",
+          "by Year",
+          "count distinct Team",
+          "then",
+          "sort data",
+          "by Year",
+          "then",
+          "get series",
+          "with key Year",
+          "and value Team"
+        ],
+        "hint": "Use data source from June 2017 named 'Olympic medalists'"
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "title": "John vs. James in Olympic games",
+    "description": "How many athletes named John or James competed in the Olympic games throughout history? Explore the popularity of these names across different eras using the full Olympic medals dataset.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "June 2017",
+          "Olympic medalists",
+          "filter data",
+          "Athlete contains(\"James\")",
+          "then",
+          "group data",
+          "by Year",
+          "count distinct Athlete",
+          "then",
+          "windowing",
+          "window by Year(5)",
+          "middle Year",
+          "mean Athlete",
+          "then",
+          "sort data",
+          "by middle Year",
+          "then",
+          "get series",
+          "with key middle Year",
+          "and value Athlete",
+          "setProperties(seriesName=\"James\")"
+        ],
+        "hint": "Use data source from June 2017 named 'Olympic medalists'"
+      },
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "June 2017",
+          "Olympic medalists",
+          "filter data",
+          "Athlete contains(\"John\")",
+          "then",
+          "group data",
+          "by Year",
+          "count distinct Athlete",
+          "then",
+          "windowing",
+          "window by Year(5)",
+          "middle Year",
+          "mean Athlete",
+          "then",
+          "sort data",
+          "by middle Year",
+          "then",
+          "get series",
+          "with key middle Year",
+          "and value Athlete",
+          "setProperties(seriesName=\"John\")"
+        ],
+        "hint": "Use data source from June 2017 named 'Olympic medalists'"
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "title": "Turing Event visits",
+    "description": "The visualization shows total number of event visits at the Turing Institute - this counts people separately per event, so if you went to two events, you will be counted twice.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "July 2017",
+          "Turing Events (3 July 2017)",
+          "windowing",
+          "expanding by Date",
+          "sum Number",
+          "then",
+          "get series",
+          "with key last Date",
+          "and value Number"
+        ],
+        "hint": "Use data source from July 2017 named 'Turing Events (3 July 2017)'"
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "title": "Number of attendees per kind of event",
+    "description": "This visualization shows the total number of attendees per different kind of events held at the Alan Turing Institute.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "July 2017",
+          "Turing Events (3 July 2017, corrected)",
+          "filter data",
+          "Kind is not",
+          "Masterclass",
+          "and Kind is not",
+          "External event",
+          "then",
+          "group data",
+          "by Kind",
+          "sum Number",
+          "then",
+          "get series",
+          "with key Kind",
+          "and value Number"
+        ],
+        "hint": "Use data source from July 2017 named 'Turing Events (3 July 2017, corrected)'"
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "title": "Tomas' papers at the Turing",
+    "description": "This just tests basic search in pivot type provider and also uploads the list of publications scraped from Turing website",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "July 2017",
+          "Turing Papers (3 July 2017, raw)",
+          "filter data",
+          "Details contains(\"Petricek\")",
+          "then",
+          "get the data"
+        ],
+        "hint": "Use data source from July 2017 named 'Turing Papers (3 July 2017, raw)'"
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "title": "Price of Gold 1969-2017",
+    "description": "Historical price of gold in US Dollar, Euro, Pound Sterling and Japanese Yen",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "July 2017",
+          "Price Of Gold",
+          "drop columns",
+          "then",
+          "get the data"
+        ],
+        "hint": "Use data source from July 2017 named 'Price Of Gold'"
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "title": "Exchange Rate of Pound Sterling to US Dollar 2010-2017",
+    "description": "Ratio of Pound Sterling to the US Dollar, from Jan 2010 to July 2017",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "July 2017",
+          "Exchange rate of GBP to USD",
+          "drop columns",
+          "then",
+          "get the data"
+        ],
+        "hint": "Use data source from July 2017 named 'Exchange rate of GBP to USD'"
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "title": "Historical FTSE100 2009-2016",
+    "description": "FTSE opening, closing, highest prices, as well as stock volume. Daily data from 2009 to 2016.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "July 2017",
+          "FTSE100 2009-2016",
+          "drop columns",
+          "then",
+          "get the data"
+        ],
+        "hint": "Use data source from July 2017 named 'FTSE100 2009-2016'"
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "title": "Guess the number of Turing people",
+    "description": "Latest version with doctoral students, research fellows, faculty fellows and RSE team",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "July 2017",
+          "Turing People (22 July)",
+          "group data",
+          "by Role",
+          "count all",
+          "then",
+          "filter data",
+          "Role is not",
+          "Leadership",
+          "then",
+          "get series",
+          "with key Role",
+          "and value count"
+        ],
+        "hint": "Use data source from July 2017 named 'Turing People (22 July)'"
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "title": "Total number of YouTube views",
+    "description": "Total number of YouTube views of all Turing videos",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "July 2017",
+          "Turing YouTube Views (22 July)",
+          "windowing",
+          "expanding by Date",
+          "sum Views",
+          "then",
+          "get series",
+          "with key last Date",
+          "and value Views"
+        ],
+        "hint": "Use data source from July 2017 named 'Turing YouTube Views (22 July)'"
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "title": "Guess the number of Turing people",
+    "description": "Latest version with doctoral students, research fellows, faculty fellows and RSE team. Now also with updated naming of Turing Fellows.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "July 2017",
+          "Turing People (23 July)",
+          "group data",
+          "by Role",
+          "count all",
+          "then",
+          "filter data",
+          "Role is not",
+          "Leadership",
+          "then",
+          "get series",
+          "with key Role",
+          "and value count"
+        ],
+        "hint": "Use data source from July 2017 named 'Turing People (23 July)'"
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "title": "FTSE100: Moving average",
+    "description": "Displays moving average of the FTSE closing price over a very long window.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "August 2017",
+          "FTSE100 (2012-2017)",
+          "windowing",
+          "window by Date(50)",
+          "last Date",
+          "mean Open",
+          "mean Close",
+          "then",
+          "get series",
+          "with key last Date",
+          "and value Close"
+        ],
+        "hint": "Use data source from August 2017 named 'FTSE100 (2012-2017)'"
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "title": "Mortality Rate in USA",
+    "description": "Male and female mortality rate since 1980",
+    "chains": [
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "United States",
+          "Health",
+          "Mortality rate, adult, male (per 1,000 male adults)",
+          "map(fun x -> x / 1000)"
+        ]
+      },
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "United States",
+          "Health",
+          "Mortality rate, adult, female (per 1,000 female adults)",
+          "map(fun x -> x / 1000)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "title": "MozFest - Government expenditure",
+    "description": "Sample visualization showing top 7 services from the UK government expenditure. For more examples, see: http://gamma.turing.ac.uk/expenditure/",
+    "chains": [
+      {
+        "provider": "expenditure",
+        "steps": [
+          "expenditure",
+          "byYear",
+          "2015",
+          "inTermsOf",
+          "GDP",
+          "sortValues(reverse=true)",
+          "skip(1)",
+          "take(7)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "title": "MozFest - University enrolment",
+    "description": "Sample visualization using the World Bank type provider to compare university enrolment across several European countries.",
+    "chains": [
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "France",
+          "Education",
+          "Enrolment in tertiary education per 100,000 inhabitants, both sexes",
+          "setProperties(seriesName=\"France\")"
+        ]
+      },
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "Denmark",
+          "Education",
+          "Enrolment in tertiary education per 100,000 inhabitants, both sexes",
+          "setProperties(seriesName=\"Denmark\")"
+        ]
+      },
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "United Kingdom",
+          "Education",
+          "Enrolment in tertiary education per 100,000 inhabitants, both sexes",
+          "setProperties(seriesName=\"United Kingdom\")"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "title": "MozFest - Number of Olympic teams",
+    "description": "Sample visualization using the pivot type provider to aggregate data on Olympic games. It shows number of distinct teams per year.",
+    "chains": [
+      {
+        "provider": "olympics",
+        "steps": [
+          "olympics",
+          "group data",
+          "by Year",
+          "count distinct Team",
+          "then",
+          "sort data",
+          "by Year",
+          "then",
+          "get series",
+          "with key Year",
+          "and value Team"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "title": "MozFest - Turing fellows",
+    "description": "Sample visualization that uses custom CSV file with information about Turing people. It counts the number of Turing Fellows by University.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "July 2017",
+          "Turing People (23 July)",
+          "filter data",
+          "Position is",
+          "Turing Fellow",
+          "then",
+          "group data",
+          "by University",
+          "count all",
+          "then",
+          "get series",
+          "with key University",
+          "and value count"
+        ],
+        "hint": "Use data source from July 2017 named 'Turing People (23 July)'"
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "title": "MozFest - Guess US emissions",
+    "description": "Sample visualization that asks the reader to make a guess. In this demo, we use WorldBank data to let the user guess CO2 emissions of of the US",
+    "chains": [
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "United States",
+          "Climate Change",
+          "CO2 emissions (metric tons per capita)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "title": "MozFest - Guess number of gold medals",
+    "description": "Sample visualization showing an interactive chart where you have to make a guess first. Here, guess the total number of Gold medals per athlete.",
+    "chains": [
+      {
+        "provider": "olympics",
+        "steps": [
+          "olympics",
+          "group data",
+          "by Athlete",
+          "sum Gold",
+          "then",
+          "sort data",
+          "by Gold descending",
+          "then",
+          "paging",
+          "take(6)",
+          "get series",
+          "with key Athlete",
+          "and value Gold"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "title": "MozFest - University enrolment",
+    "description": "Sample visualization using the World Bank type provider to compare university enrolment across several European countries.\r\n(now with Brazil!)",
+    "chains": [
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "France",
+          "Education",
+          "Enrolment in tertiary education per 100,000 inhabitants, both sexes",
+          "setProperties(seriesName=\"France\")"
+        ]
+      },
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "Denmark",
+          "Education",
+          "Enrolment in tertiary education per 100,000 inhabitants, both sexes",
+          "setProperties(seriesName=\"Denmark\")"
+        ]
+      },
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "United Kingdom",
+          "Education",
+          "Enrolment in tertiary education per 100,000 inhabitants, both sexes",
+          "setProperties(seriesName=\"United Kingdom\")"
+        ]
+      },
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "Brazil",
+          "Education",
+          "Enrolment in tertiary education per 100,000 inhabitants, both sexes",
+          "setProperties(seriesName=\"Brazil\")"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "title": "MozFest - Trees in Linz, Austria",
+    "description": "Number of Trees grouped by type ",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "October 2017",
+          "Trees in the City of Linz, Austria",
+          "drop columns",
+          "then",
+          "group data",
+          "by Art",
+          "average Flaeche",
+          "average Hoehe",
+          "count all",
+          "then",
+          "get series",
+          "with key Art",
+          "and value count"
+        ],
+        "hint": "Use data source from October 2017 named 'Trees in the City of Linz, Austria'"
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "title": "Libraries",
+    "description": "Library counts by library service",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "October 2017",
+          "Library counts by library service",
+          "group data",
+          "by Library service",
+          "count distinct Library name",
+          "then",
+          "sort data",
+          "by Library name descending",
+          "then",
+          "paging",
+          "take(20)",
+          "get series",
+          "with key Library service",
+          "and value Library name"
+        ],
+        "hint": "Use data source from October 2017 named 'Library counts by library service'"
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "title": "Gender Pay Gap",
+    "description": "Percentage difference in mean hourly pay between genders.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "April 2018",
+          "Gender pay gap",
+          "drop columns",
+          "drop Address",
+          "drop CompanyLinkToGPGInfo",
+          "drop CompanyNumber",
+          "drop SicCodes",
+          "then",
+          "sort data",
+          "by DiffMeanHourlyPercent descending",
+          "then",
+          "get series",
+          "with key CurrentName",
+          "and value DiffMeanHourlyPercent",
+          "take(5)",
+          "shuffle()"
+        ],
+        "hint": "Use data source from April 2018 named 'Gender pay gap'"
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "title": "tgergg",
+    "description": "fddfg",
+    "chains": [
+      {
+        "provider": "olympics",
+        "steps": [
+          "olympics",
+          "group data",
+          "by Team",
+          "sum Gold",
+          "then",
+          "sort data",
+          "by Gold descending",
+          "then",
+          "paging",
+          "take(10)",
+          "get series",
+          "with key Team",
+          "and value Gold"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "title": "Trade war between US and China",
+    "description": "Guess how much does US import from China and vice versa and how large proportion of this will be affected by tariffs.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "July 2018",
+          "US China trade war",
+          "get series",
+          "with key Information",
+          "and value Value",
+          "reverse()"
+        ],
+        "hint": "Use data source from July 2018 named 'US China trade war'"
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "title": "Imports from USA to China in 2016 (billions of $)",
+    "description": "Guess what China imports from the US",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "August 2018",
+          "Imports from USA to China in 2016",
+          "get series",
+          "with key Category",
+          "and value Total"
+        ],
+        "hint": "Use data source from August 2018 named 'Imports from USA to China in 2016'"
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "title": "Imports from China to USA in 2016 (billions of $)",
+    "description": "Guess what China ",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "August 2018",
+          "Imports from China to USA in 2016",
+          "get series",
+          "with key Category",
+          "and value Value"
+        ],
+        "hint": "Use data source from August 2018 named 'Imports from China to USA in 2016'"
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "title": "Trade war between US and China (with legend)",
+    "description": "Guess how much does US import from China and vice versa and how large proportion of this will be affected by tariffs.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "August 2018",
+          "Trade war between US and China",
+          "get series",
+          "with key Information",
+          "and value Value",
+          "reverse()"
+        ],
+        "hint": "Use data source from August 2018 named 'Trade war between US and China'"
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "title": "Guess UK government expenditure",
+    "description": "Following the Classification of the Functions of Government, we split the overall expenditure into ten services. Can you guess how much we spent (as a percentage of GDP) on the top six UK public services?",
+    "chains": [
+      {
+        "provider": "expenditure",
+        "steps": [
+          "expenditure",
+          "byYear",
+          "2015",
+          "inTermsOf",
+          "GDP",
+          "sortValues(reverse=true)",
+          "skip(1)",
+          "take(5)",
+          "shuffle()"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "title": "US v China",
+    "description": "US v China co2 Needs work",
+    "chains": [
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "United States",
+          "Climate Change",
+          "CO2 emissions (kt)"
+        ]
+      },
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "China",
+          "Climate Change",
+          "CO2 emissions (kt)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "title": "Kent Lords travel expenses ",
+    "description": "Top 3 members of the House of Lords from Kent by the amount spent on travel expneses.",
+    "chains": [
+      {
+        "provider": "shared",
+        "steps": [
+          "shared",
+          "by date",
+          "March 2020",
+          "Lords Travel Expenses",
+          "filter data",
+          "County is",
+          "Kent",
+          "then",
+          "sort data",
+          "by Travel Costs descending",
+          "then",
+          "paging",
+          "take(3)",
+          "get series",
+          "with key Name",
+          "and value Travel Costs"
+        ],
+        "hint": "Use data source from March 2020 named 'Lords Travel Expenses'"
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "title": "If Phelps was a country",
+    "description": "Michael Phelps has more Gold medals from the Olympic games than many countries.",
+    "chains": [
+      {
+        "provider": "olympics",
+        "steps": [
+          "olympics",
+          "filter data",
+          "Athlete is",
+          "Michael Phelps",
+          "then",
+          "group data",
+          "by Athlete",
+          "sum Gold",
+          "then",
+          "get series",
+          "with key Athlete",
+          "and value Gold"
+        ]
+      },
+      {
+        "provider": "olympics",
+        "steps": [
+          "olympics",
+          "group data",
+          "by Team",
+          "sum Gold",
+          "then",
+          "sort data",
+          "by Gold descending",
+          "then",
+          "paging",
+          "skip(42)",
+          "take(6)",
+          "get series",
+          "with key Team",
+          "and value Gold"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "title": "If Phelps was a country (nicer colors)",
+    "description": "Michael Phelps has won more Gold medals than many entire countries have earned throughout Olympic history. This chart puts his extraordinary achievement in perspective using the full medals dataset.",
+    "chains": [
+      {
+        "provider": "olympics",
+        "steps": [
+          "olympics",
+          "filter data",
+          "Athlete is",
+          "Michael Phelps",
+          "then",
+          "group data",
+          "by Athlete",
+          "sum Gold",
+          "then",
+          "get series",
+          "with key Athlete",
+          "and value Gold"
+        ]
+      },
+      {
+        "provider": "olympics",
+        "steps": [
+          "olympics",
+          "group data",
+          "by Team",
+          "sum Gold",
+          "then",
+          "sort data",
+          "by Gold descending",
+          "then",
+          "paging",
+          "skip(42)",
+          "take(6)",
+          "get series",
+          "with key Team",
+          "and value Gold"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "title": "Who does the Doctor fight most frequently?",
+    "description": "Using a graph database of Doctor Who episodes, this demo finds the most frequent enemies faced by The Doctor. Which villain has appeared most often throughout the show's long history?",
+    "chains": [
+      {
+        "provider": "drWho",
+        "steps": [
+          "drWho",
+          "Character",
+          "Doctor",
+          "ENEMY_OF",
+          "[any]",
+          "APPEARED_IN",
+          "[any]",
+          "explore_properties",
+          "explore",
+          "group data",
+          "by 1-name",
+          "count distinct 2-name",
+          "then",
+          "sort data",
+          "by 2-name descending",
+          "then",
+          "paging",
+          "take(7)",
+          "get series",
+          "with key 1-name",
+          "and value 2-name"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 90,
+    "title": "CO2 emissions -- USA vs China",
+    "description": "CO2 emissions of China and USA",
+    "chains": [
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "United States",
+          "Climate Change",
+          "CO2 emissions (kt)"
+        ]
+      },
+      {
+        "provider": "worldbank",
+        "steps": [
+          "worldbank",
+          "byCountry",
+          "China",
+          "Climate Change",
+          "CO2 emissions (kt)"
+        ]
+      }
+    ]
+  }
+]
