@@ -199,7 +199,7 @@ Examples:
   for (const snippet of testSnippets) {
     log.header(`#${snippet.id}: ${snippet.title}`);
 
-    for (const chain of snippet.chains) {
+    for (const [chainIdx, chain] of snippet.chains.entries()) {
       log.trace(`  [${chain.provider}] ${chain.steps.length - 1} steps to score`);
 
       let chainTotal = 0, chainCorrect = 0;
@@ -228,8 +228,8 @@ Examples:
       grandCorrect += chainCorrect;
 
       if (opts.output) {
-        csvRows.push({ id: snippet.id, title: snippet.title, provider: chain.provider,
-                       total: chainTotal, correct: chainCorrect });
+        csvRows.push({ id: snippet.id, title: snippet.title, chainIdx,
+                       provider: chain.provider, total: chainTotal, correct: chainCorrect });
       }
     }
 
@@ -246,9 +246,9 @@ Examples:
     const prov = providerFilter ?? 'all';
     const filename = `${MODEL}__${promptLabel}__${prov}__${ts}.csv`;
     mkdirSync(opts.output, { recursive: true });
-    const header = 'snippet_id,snippet_title,provider,total_steps,correct_steps\n';
+    const header = 'snippet_id,snippet_title,chain_index,provider,total_steps,correct_steps\n';
     const body = csvRows.map(r =>
-      `${r.id},"${r.title.replace(/"/g, '""')}",${r.provider},${r.total},${r.correct}`
+      `${r.id},"${r.title.replace(/"/g, '""')}",${r.chainIdx},${r.provider},${r.total},${r.correct}`
     ).join('\n');
     writeFileSync(join(opts.output, filename), header + body + '\n');
     log.trace(`\nResults written to ${join(opts.output, filename)}`);
