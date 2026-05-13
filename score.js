@@ -1,5 +1,5 @@
-import { readFileSync } from 'fs';
-import { join, dirname } from 'path';
+import { readFileSync, writeFileSync, mkdirSync } from 'fs';
+import { join, dirname, basename, extname } from 'path';
 import { fileURLToPath } from 'url';
 import { Command } from 'commander';
 import Anthropic from '@anthropic-ai/sdk';
@@ -50,36 +50,7 @@ async function withRetry(fn, maxAttempts = 5) {
 
 // ── LLM ───────────────────────────────────────────────────────────────────────
 
-const SYSTEM_PROMPT =
-`You are helping complete data queries in The Gamma, an interactive data exploration environment.
-Queries are built step-by-step by picking members from a menu.
-
-## Tabular providers (olympics, shared datasets)
-Operations available: "filter data", "group data", "sort data", "drop columns", "paging", "windowing", "get series", "get the data".
-- After you specify an operation and ALL its parameters, pick "then" to finish that operation and start the next one. NEVER pick "preview" — it does not exist as a valid continuation; "then" is what you want.
-- "paging" must be selected BEFORE "take(n)" or "skip(n)". Pick "paging" first, then the specific limit.
-- "get series" produces chart data: follow it with "with key FIELD" then "and value FIELD". Use it when the goal is a chart or line graph.
-- "get the data" retrieves a flat table. Use it only when the goal is tabular output, NOT for charts.
-- For multi-column sort, after "sort data" pick the primary column+direction, then optionally "and by X descending/ascending" for secondary columns, then "then".
-- For "shared" datasets: browse via "by date" (most common) or "by tag", then pick the specific dataset by name.
-
-## Data cube providers (worldbank, expenditure)
-Navigation: choose a primary dimension first, then the specific value, then the category, then the indicator.
-- worldbank dimensions: if the goal names a specific country and wants data over time → pick "byCountry"; if the goal names a specific year and wants a cross-country comparison → pick "byYear". Example: "CO2 emissions of USA" → byCountry; "top economies in 2012" → byYear.
-- expenditure dimensions: "byService" = query is about a specific spending area; "byYear" = query is about all services in a specific year.
-- expenditure sub-navigation: after a service pick "bySubService" (NOT "bySubServiceComponents") to drill into sub-categories.
-- expenditure scaling: "inTermsOf" → then "GDP", "Adjusted", or "Cash" to normalise the values.
-- After picking an indicator the result is a time series. "take(n)" = keep the first n data points (most recent years when data is chronological). "sortValues(false)" = sort by value highest-first, "sortValues(true)" = lowest-first. "sortKeys" = sort alphabetically by label — avoid it unless explicitly needed. Pick sort BEFORE take.
-
-## Graph provider (drWho)
-Navigation: start with a node type (Character, Species, Episode, …), pick a specific node (e.g., "Doctor"), then navigate outward via relationship labels (ENEMY_OF, COMPANION_OF, APPEARED_IN, …).
-- "[any]" is a wildcard matching any connected node. Pick it whenever the goal doesn't require a specific named entity. It always appears as one of the options — look for it explicitly.
-- "explore_properties" opens the properties of the currently-reached nodes (use it to access node attributes like name, actor, year).
-- "explore" switches to full tabular mode where group/sort/filter apply. Column names have numeric prefixes (e.g., "1-name", "2-name") that reflect the graph path depth.
-- Once in tabular mode, follow the tabular provider rules above (use "then" after operations, use "paging" before "take", etc.).
-- Column names after "explore" have numeric depth prefixes: "1-name" = name of the first node in your path, "2-name" = name of the second node, etc. When grouping, use the column that matches the node you want to count or aggregate over.`;
-
-async function askLLM(title, description, hint, path, members, useSystemPrompt) {
+async function askLLM(title, description, hint, path, members, systemPrompt) {
   const pathStr = path.length > 1
     ? path.slice(1).map(s => `"${s}"`).join(' > ')
     : '(just started)';
@@ -98,7 +69,7 @@ Reply with just the number of the best option.`;
   const response = await withRetry(() => client.messages.create({
     model: MODEL,
     max_tokens: 16,
-    ...(useSystemPrompt ? { system: SYSTEM_PROMPT } : {}),
+    ...(systemPrompt ? { system: systemPrompt } : {}),
     messages: [{ role: 'user', content: prompt }],
   }));
 
@@ -108,7 +79,7 @@ Reply with just the number of the best option.`;
 
 // ── scoring (async generator — yields one result per scored step) ─────────────
 
-async function* scoreChain(entities, snippet, chain, useSystemPrompt) {
+async function* scoreChain(entities, snippet, chain, systemPrompt) {
   const [providerName, ...steps] = chain.steps;
   const entity = entities.find(e => e.Kind.fields[0].Name === providerName);
   if (!entity) return;
@@ -143,7 +114,7 @@ async function* scoreChain(entities, snippet, chain, useSystemPrompt) {
     // Signal that we're about to ask, so the caller can show a spinner
     yield { pending: true, step, memberCount: members.length };
 
-    const llmIdx = await askLLM(snippet.title, snippet.description, chain.hint ?? null, path, members, useSystemPrompt);
+    const llmIdx = await askLLM(snippet.title, snippet.description, chain.hint ?? null, path, members, systemPrompt);
     const correct = llmIdx === truthIdx;
     const llmPick = llmIdx !== null ? members[llmIdx]?.Name ?? null : null;
 
@@ -172,7 +143,8 @@ async function main() {
     .option('-n, --count <n>', 'number of snippets to test', '3')
     .option('-p, --provider <name>', 'filter to a specific provider (olympics, worldbank, expenditure, drwho, shared)')
     .option('-m, --model <name>', 'LLM model to use', 'claude-haiku-4-5')
-    .option('--no-system-prompt', 'disable the system prompt (send bare queries)')
+    .option('-s, --system-prompt <file>', 'path to a text file containing the system prompt')
+    .option('-o, --output <dir>', 'directory to write CSV results to (created if absent)')
     .addHelpText('after', `
 Known models:
   ${KNOWN_MODELS.join('\n  ')}
@@ -181,7 +153,8 @@ Examples:
   node score.js -n 5
   node score.js -n 5 -p olympics
   node score.js -n 10 -p worldbank -m claude-sonnet-4-6
-  node score.js -n 5 -p olympics --no-system-prompt`);
+  node score.js -n 5 -p olympics -s prompts/default-prompt.txt
+  node score.js -n 20 -s prompts/default-prompt.txt --output results`);
 
   if (process.argv.length <= 2) { program.help(); }
 
@@ -189,7 +162,12 @@ Examples:
   const opts = program.opts();
 
   MODEL = opts.model;
-  const useSystemPrompt = opts.systemPrompt;
+  const systemPrompt = opts.systemPrompt
+    ? readFileSync(opts.systemPrompt, 'utf8')
+    : null;
+  const promptLabel = opts.systemPrompt
+    ? basename(opts.systemPrompt, extname(opts.systemPrompt))
+    : 'no-prompt';
 
   log.trace('Setting up providers...');
   const p = createAllProviders();
@@ -213,9 +191,10 @@ Examples:
     .filter(s => s.chains.length > 0)
     .slice(0, count);
 
-  log.trace(`Model: ${MODEL}   System prompt: ${useSystemPrompt ? 'on' : 'off'}${providerFilter ? `   Provider: ${providerFilter}   ${testSnippets.length} snippet(s) matched` : ''}\n`);
+  log.trace(`Model: ${MODEL}   Prompt: ${promptLabel}${providerFilter ? `   Provider: ${providerFilter}   ${testSnippets.length} snippet(s) matched` : ''}\n`);
 
   let grandTotal = 0, grandCorrect = 0;
+  const csvRows = [];
 
   for (const snippet of testSnippets) {
     log.header(`#${snippet.id}: ${snippet.title}`);
@@ -225,7 +204,7 @@ Examples:
 
       let chainTotal = 0, chainCorrect = 0;
 
-      for await (const ev of scoreChain(entities, snippet, chain, useSystemPrompt)) {
+      for await (const ev of scoreChain(entities, snippet, chain, systemPrompt)) {
         if (ev.pending) {
           log.write(clr.trace(`    "${ev.step}" (${ev.memberCount} options)... `));
           continue;
@@ -247,6 +226,11 @@ Examples:
 
       grandTotal += chainTotal;
       grandCorrect += chainCorrect;
+
+      if (opts.output) {
+        csvRows.push({ id: snippet.id, title: snippet.title, provider: chain.provider,
+                       total: chainTotal, correct: chainCorrect });
+      }
     }
 
     log.info('');
@@ -256,6 +240,19 @@ Examples:
   const summary = `${grandCorrect}/${grandTotal} steps correct (${grandPct}%)`;
   const colouredSummary = grandPct >= 70 ? clr.success(summary) : grandPct >= 40 ? clr.warn(summary) : clr.fail(summary);
   log.summary(`Overall: ${colouredSummary}`);
+
+  if (opts.output && csvRows.length) {
+    const ts = new Date().toISOString().replace(/[^0-9]/g, '').slice(0, 15);
+    const prov = providerFilter ?? 'all';
+    const filename = `${MODEL}__${promptLabel}__${prov}__${ts}.csv`;
+    mkdirSync(opts.output, { recursive: true });
+    const header = 'snippet_id,snippet_title,provider,total_steps,correct_steps\n';
+    const body = csvRows.map(r =>
+      `${r.id},"${r.title.replace(/"/g, '""')}",${r.provider},${r.total},${r.correct}`
+    ).join('\n');
+    writeFileSync(join(opts.output, filename), header + body + '\n');
+    log.trace(`\nResults written to ${join(opts.output, filename)}`);
+  }
 }
 
 main().catch(e => { console.error(e); process.exit(1); });
