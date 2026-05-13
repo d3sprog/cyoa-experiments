@@ -1,4 +1,4 @@
-# cyoa-experiments
+# Choose-your-own-adventure experiments
 
 Experiments evaluating how well an LLM can navigate [The Gamma](https://thegamma.net) type
 provider member trees — i.e., whether it can correctly recommend the next step when building
