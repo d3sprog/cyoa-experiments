@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync } from 'fs';
+import { readFileSync, writeFileSync, appendFileSync, mkdirSync } from 'fs';
 import { join, dirname, basename, extname } from 'path';
 import { fileURLToPath } from 'url';
 import { Command } from 'commander';
@@ -193,8 +193,18 @@ Examples:
 
   log.trace(`Model: ${MODEL}   Prompt: ${promptLabel}${providerFilter ? `   Provider: ${providerFilter}   ${testSnippets.length} snippet(s) matched` : ''}\n`);
 
+  let csvPath = null;
+  if (opts.output) {
+    const ts = new Date().toISOString().replace(/[^0-9]/g, '').slice(0, 15);
+    const prov = providerFilter ?? 'all';
+    const filename = `${MODEL}__${promptLabel}__${prov}__${ts}.csv`;
+    mkdirSync(opts.output, { recursive: true });
+    csvPath = join(opts.output, filename);
+    writeFileSync(csvPath, 'snippet_id,snippet_title,chain_index,provider,total_steps,correct_steps\n');
+    log.trace(`Writing results to ${csvPath}\n`);
+  }
+
   let grandTotal = 0, grandCorrect = 0;
-  const csvRows = [];
 
   for (const snippet of testSnippets) {
     log.header(`#${snippet.id}: ${snippet.title}`);
@@ -227,9 +237,9 @@ Examples:
       grandTotal += chainTotal;
       grandCorrect += chainCorrect;
 
-      if (opts.output) {
-        csvRows.push({ id: snippet.id, title: snippet.title, chainIdx,
-                       provider: chain.provider, total: chainTotal, correct: chainCorrect });
+      if (csvPath) {
+        const title = snippet.title.replace(/"/g, '""');
+        appendFileSync(csvPath, `${snippet.id},"${title}",${chainIdx},${chain.provider},${chainTotal},${chainCorrect}\n`);
       }
     }
 
@@ -241,18 +251,7 @@ Examples:
   const colouredSummary = grandPct >= 70 ? clr.success(summary) : grandPct >= 40 ? clr.warn(summary) : clr.fail(summary);
   log.summary(`Overall: ${colouredSummary}`);
 
-  if (opts.output && csvRows.length) {
-    const ts = new Date().toISOString().replace(/[^0-9]/g, '').slice(0, 15);
-    const prov = providerFilter ?? 'all';
-    const filename = `${MODEL}__${promptLabel}__${prov}__${ts}.csv`;
-    mkdirSync(opts.output, { recursive: true });
-    const header = 'snippet_id,snippet_title,chain_index,provider,total_steps,correct_steps\n';
-    const body = csvRows.map(r =>
-      `${r.id},"${r.title.replace(/"/g, '""')}",${r.chainIdx},${r.provider},${r.total},${r.correct}`
-    ).join('\n');
-    writeFileSync(join(opts.output, filename), header + body + '\n');
-    log.trace(`\nResults written to ${join(opts.output, filename)}`);
-  }
+  if (csvPath) log.trace(`\nResults written to ${csvPath}`);
 }
 
 main().catch(e => { console.error(e); process.exit(1); });
