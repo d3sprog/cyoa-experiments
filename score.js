@@ -1,65 +1,49 @@
-import { readFileSync, writeFileSync, appendFileSync, mkdirSync } from 'fs';
-import { join, dirname, basename, extname } from 'path';
-import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
+import { basename, extname } from 'path';
+import { pathToFileURL } from 'url';
 import { Command } from 'commander';
 import Anthropic from '@anthropic-ai/sdk';
 import { ANTHROPIC_API_KEY } from './config.js';
-import { createAllProviders, resolveType, resolveMethodReturn, getGlobals } from './providers.js';
-import { log, clr } from './log.js';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { runEval, withRetry, MAX_OPTIONS } from './runner.js';
 
 // ── constants ─────────────────────────────────────────────────────────────────
 
-const MAX_OPTIONS = 500; // cap to stay within API token limits
+const KNOWN_MODELS = [
+  'claude-haiku-4-5',
+  'claude-sonnet-5',
+  'claude-opus-5',
+  'claude-sonnet-4-6',
+  'claude-opus-4-7',
+];
 
-const SERIES_OPS = new Set([
-  'get series', 'get the data',
-  'with key', 'and value',
-  'take', 'skip', 'shuffle', 'reverse', 'sortKeys', 'sortValues',
-  'setProperties', 'map', 'append',
-]);
+// Sonnet 5 and Opus 5 run adaptive thinking when `thinking` is omitted, which would
+// burn the whole max_tokens budget before any answer text appears — every step would
+// then parse as NaN and score wrong. Picking a menu item is a single-shot decision,
+// so thinking is switched off explicitly. Older models do not think unless asked.
+const THINKS_BY_DEFAULT = /^claude-(sonnet|opus)-5/;
 
 const client = new Anthropic({ apiKey: ANTHROPIC_API_KEY });
-let MODEL = 'claude-haiku-4-5';
-
-// ── retry wrapper ─────────────────────────────────────────────────────────────
-
-const sleep = ms => new Promise(r => setTimeout(r, ms));
-
-async function withRetry(fn, maxAttempts = 5) {
-  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-    try {
-      return await fn();
-    } catch (e) {
-      const isRateLimit = e instanceof Anthropic.RateLimitError || e?.status === 429;
-      const isTransient = e instanceof Anthropic.APIConnectionError || (e?.status ?? 0) >= 500;
-
-      if (attempt === maxAttempts || (!isRateLimit && !isTransient)) throw e;
-
-      // Honour the retry-after header when present, otherwise exponential backoff
-      const retryAfterMs = e?.headers?.['retry-after']
-        ? parseInt(e.headers['retry-after']) * 1000
-        : Math.min(2 ** attempt * 1000, 60_000);
-      const jitter = Math.random() * 1000;
-      const delay = Math.round(retryAfterMs + jitter);
-
-      log.trace(`  ${isRateLimit ? 'rate limited' : 'API error'} — waiting ${(delay / 1000).toFixed(1)}s then retry ${attempt}/${maxAttempts - 1}...`);
-      await sleep(delay);
-    }
-  }
-}
 
 // ── LLM ───────────────────────────────────────────────────────────────────────
 
-async function askLLM(title, description, hint, chainHint, path, members, systemPrompt) {
+function classifyError(e) {
+  const isRateLimit = e instanceof Anthropic.RateLimitError || e?.status === 429;
+  const isTransient = e instanceof Anthropic.APIConnectionError || (e?.status ?? 0) >= 500;
+  return {
+    retryable: isRateLimit || isTransient,
+    retryAfterMs: e?.headers?.['retry-after'] ? parseInt(e.headers['retry-after']) * 1000 : null,
+    label: isRateLimit ? 'rate limited' : 'API error',
+  };
+}
+
+// Exported so estimate-cost.js prices the exact prompt this scorer sends.
+export function buildPrompt({ title, description, hint, chainHint, path, members }) {
   const pathStr = path.length > 1
     ? path.slice(1).map(s => `"${s}"`).join(' > ')
     : '(just started)';
-  const options = members.map((m, i) => `${i + 1}. ${m.Name}`).join('\n');
+  const options = members.map((m, i) => `${i + 1}. ${m.Name ?? m}`).join('\n');
 
-  const prompt =
-`Goal: ${title}
+  return `Goal: ${title}
 ${description ? `Description: ${description}\n` : ''}${chainHint ? `Context: ${chainHint}\n` : ''}${hint ? `Hint: ${hint}\n` : ''}
 Steps chosen so far: ${pathStr}
 
@@ -67,87 +51,28 @@ Choose the next step from these options:
 ${options}
 
 Reply with just the number of the best option.`;
-
-  const response = await withRetry(() => client.messages.create({
-    model: MODEL,
-    max_tokens: 16,
-    ...(systemPrompt ? { system: systemPrompt } : {}),
-    messages: [{ role: 'user', content: prompt }],
-  }));
-
-  const num = parseInt(response.content[0].text.trim(), 10);
-  return isNaN(num) ? null : num - 1; // 0-based
 }
 
-// ── scoring (async generator — yields one result per scored step) ─────────────
+function createAsk(model, systemPrompt) {
+  return async (step) => {
+    const response = await withRetry(() => client.messages.create({
+      model,
+      max_tokens: 16,
+      ...(THINKS_BY_DEFAULT.test(model) ? { thinking: { type: 'disabled' } } : {}),
+      ...(systemPrompt ? { system: systemPrompt } : {}),
+      messages: [{ role: 'user', content: buildPrompt(step) }],
+    }), classifyError);
 
-async function* scoreChain(entities, snippet, chain, systemPrompt) {
-  const [providerName, ...steps] = chain.steps;
-  const entity = entities.find(e => e.Kind.fields[0].Name === providerName);
-  if (!entity) return;
-
-  let typ = entity.Type;
-  const path = [providerName];
-
-  for (let i = 0; i < steps.length; i++) {
-    const step = steps[i];
-    typ = await resolveType(typ);
-    if (!typ) break;
-
-    if (typ.tag !== 1) {
-      if (typ.tag === 4) {
-        const baseName = step.replace(/\([^)]*\)$/, '');
-        if (SERIES_OPS.has(baseName) || SERIES_OPS.has(step)) break;
-        typ = await resolveMethodReturn(typ);
-        if (!typ) break;
-        i--;
-        continue;
-      }
-      break;
-    }
-
-    const members = typ.fields[0].Members;
-    if (!members.length) break;
-
-    const baseName = step.replace(/\([^)]*\)$/, '');
-    const truthIdx = members.findIndex(m => m.Name === baseName || m.Name === step);
-    if (truthIdx === -1) break;
-
-    // If the member list is huge, sample MAX_OPTIONS entries keeping the correct one
-    let askMembers = members;
-    let askTruthIdx = truthIdx;
-    if (members.length > MAX_OPTIONS) {
-      const others = members.filter((_, i) => i !== truthIdx)
-                            .sort(() => Math.random() - 0.5)
-                            .slice(0, MAX_OPTIONS - 1);
-      askTruthIdx = Math.floor(Math.random() * MAX_OPTIONS);
-      others.splice(askTruthIdx, 0, members[truthIdx]);
-      askMembers = others;
-    }
-
-    // Signal that we're about to ask, so the caller can show a spinner
-    yield { pending: true, step, memberCount: members.length, truncated: askMembers.length < members.length };
-
-    const llmIdx = await askLLM(snippet.title, snippet.description, chain.hint ?? null, chain.chainHint ?? null, path, askMembers, systemPrompt);
-    const correct = llmIdx === askTruthIdx;
-    const llmPick = llmIdx !== null ? askMembers[llmIdx]?.Name ?? null : null;
-
-    yield { pending: false, step, llmPick, correct };
-
-    path.push(members[truthIdx].Name);
-    typ = members[truthIdx].Type;
-  }
+    const num = parseInt(response.content[0].text.trim(), 10);
+    return {
+      index: isNaN(num) ? null : num - 1, // 0-based
+      inputTokens: response.usage.input_tokens,
+      outputTokens: response.usage.output_tokens,
+    };
+  };
 }
 
 // ── main ──────────────────────────────────────────────────────────────────────
-
-const KNOWN_MODELS = [
-  'claude-haiku-4-5',
-  'claude-haiku-4-5-20251001',
-  'claude-sonnet-4-5',
-  'claude-sonnet-4-6',
-  'claude-opus-4-7',
-];
 
 async function main() {
   const program = new Command();
@@ -160,6 +85,7 @@ async function main() {
     .option('-s, --system-prompt <file>', 'path to a text file containing the system prompt')
     .option('-o, --output <dir>', 'directory to write CSV results to (created if absent)')
     .option('-r, --resume <file>', 'resume an interrupted run: skip already-scored chains and append to this CSV')
+    .option('--dry-run', 'walk the chains and report option-list sizes without calling the API')
     .addHelpText('after', `
 Known models:
   ${KNOWN_MODELS.join('\n  ')}
@@ -167,17 +93,17 @@ Known models:
 Examples:
   node score.js -n 5
   node score.js -n 5 -p olympics
-  node score.js -n 10 -p worldbank -m claude-sonnet-4-6
+  node score.js -n 10 -p worldbank -m claude-sonnet-5
   node score.js -n 5 -p olympics -s prompts/default-prompt.txt
   node score.js -n 20 -s prompts/default-prompt.txt --output results
-  node score.js -n 20 -s prompts/default-prompt.txt --resume results/run.csv`);
+  node score.js -n 20 -s prompts/default-prompt.txt --resume results/run.csv
+  node score.js -n 61 --dry-run`);
 
   if (process.argv.length <= 2) { program.help(); }
 
   program.parse();
   const opts = program.opts();
 
-  MODEL = opts.model;
   const systemPrompt = opts.systemPrompt
     ? readFileSync(opts.systemPrompt, 'utf8')
     : null;
@@ -185,105 +111,16 @@ Examples:
     ? basename(opts.systemPrompt, extname(opts.systemPrompt))
     : 'no-prompt';
 
-  log.trace('Setting up providers...');
-  const p = createAllProviders();
-  const entities = await getGlobals(p);
-  log.trace('Providers ready.\n');
-
-  const snippets = JSON.parse(
-    readFileSync(join(__dirname, 'data', 'eval-snippets.json'), 'utf8')
-  );
-
-  const count = parseInt(opts.count, 10) || 3;
-  const providerFilter = opts.provider?.toLowerCase() ?? null;
-
-  const testSnippets = snippets
-    .map(s => ({
-      ...s,
-      chains: providerFilter
-        ? s.chains.filter(ch => ch.provider.toLowerCase() === providerFilter)
-        : s.chains,
-    }))
-    .filter(s => s.chains.length > 0)
-    .slice(0, count);
-
-  log.trace(`Model: ${MODEL}   Prompt: ${promptLabel}${providerFilter ? `   Provider: ${providerFilter}   ${testSnippets.length} snippet(s) matched` : ''}\n`);
-
-  let csvPath = null;
-  const doneChains = new Set(); // "snippetId:chainIdx" pairs already in CSV
-
-  if (opts.resume) {
-    csvPath = opts.resume;
-    const lines = readFileSync(csvPath, 'utf8').trim().split('\n').slice(1); // skip header
-    for (const line of lines) {
-      if (!line.trim()) continue;
-      const [id, , chainIdx] = line.split(',');
-      if (id) doneChains.add(`${id}:${chainIdx}`);
-    }
-    log.trace(`Resuming ${csvPath} — skipping ${doneChains.size} already-scored chain(s)\n`);
-  } else if (opts.output) {
-    const ts = new Date().toISOString().replace(/[^0-9]/g, '').slice(0, 15);
-    const prov = providerFilter ?? 'all';
-    const filename = `${MODEL}__${promptLabel}__${prov}__${ts}.csv`;
-    mkdirSync(opts.output, { recursive: true });
-    csvPath = join(opts.output, filename);
-    writeFileSync(csvPath, 'snippet_id,snippet_title,chain_index,provider,total_steps,correct_steps\n');
-    log.trace(`Writing results to ${csvPath}\n`);
-  }
-
-  let grandTotal = 0, grandCorrect = 0;
-
-  for (const snippet of testSnippets) {
-    log.header(`#${snippet.id}: ${snippet.title}`);
-
-    for (const [chainIdx, chain] of snippet.chains.entries()) {
-      if (doneChains.has(`${snippet.id}:${chainIdx}`)) {
-        log.trace(`  [${chain.provider}] skipped (already scored)`);
-        continue;
-      }
-      log.trace(`  [${chain.provider}] ${chain.steps.length - 1} steps to score`);
-
-      let chainTotal = 0, chainCorrect = 0;
-
-      for await (const ev of scoreChain(entities, snippet, chain, systemPrompt)) {
-        if (ev.pending) {
-          const countStr = ev.truncated ? `${MAX_OPTIONS}/${ev.memberCount} options` : `${ev.memberCount} options`;
-          log.write(clr.trace(`    "${ev.step}" (${countStr})... `));
-          continue;
-        }
-
-        if (ev.correct) {
-          log.write(clr.success('✓') + '\n');
-        } else {
-          log.write(clr.fail('✗') + clr.trace(`  ← LLM picked "${ev.llmPick}"`) + '\n');
-        }
-
-        chainTotal++;
-        if (ev.correct) chainCorrect++;
-      }
-
-      const pct = chainTotal > 0 ? Math.round(100 * chainCorrect / chainTotal) : 0;
-      const score = `  ${chainCorrect}/${chainTotal} (${pct}%)`;
-      log.info(pct >= 70 ? clr.success(score) : pct >= 40 ? clr.warn(score) : clr.fail(score));
-
-      grandTotal += chainTotal;
-      grandCorrect += chainCorrect;
-
-      if (csvPath) {
-        const title = snippet.title.replace(/"/g, '""');
-        appendFileSync(csvPath, `${snippet.id},"${title}",${chainIdx},${chain.provider},${chainTotal},${chainCorrect}\n`);
-      }
-    }
-
-    log.info('');
-  }
-
-  const grandPct = grandTotal > 0 ? Math.round(100 * grandCorrect / grandTotal) : 0;
-  const summary = `${grandCorrect}/${grandTotal} steps correct (${grandPct}%)`;
-  const colouredSummary = grandPct >= 70 ? clr.success(summary) : grandPct >= 40 ? clr.warn(summary) : clr.fail(summary);
-  log.summary(`Overall: ${colouredSummary}`);
-
-  if (csvPath) log.trace(`\nResults written to ${csvPath}`);
+  await runEval({
+    model: opts.model,
+    promptLabel,
+    maxOptions: MAX_OPTIONS,
+    ask: createAsk(opts.model, systemPrompt),
+    opts,
+  });
 }
 
-main().catch(e => { console.error(e); process.exit(1); });
+// Only run when invoked directly; estimate-cost.js imports buildPrompt from here.
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch(e => { console.error(e); process.exit(1); });
+}

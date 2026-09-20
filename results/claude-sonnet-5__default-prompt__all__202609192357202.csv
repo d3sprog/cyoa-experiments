@@ -1,0 +1,76 @@
+snippet_id,snippet_title,chain_index,provider,total_steps,correct_steps,input_tokens,output_tokens
+23,"Top medalists at Rio 2016",0,olympics,13,12,19743,39
+24,"Top medalists from London 2012",0,olympics,13,12,19684,39
+25,"Number of distinct countries in Olympics",0,olympics,11,7,15906,33
+26,"Olympic medals table by athlete",0,olympics,15,13,22408,45
+27,"You Draw It: Carbon emissions of USA",0,worldbank,5,4,10869,15
+28,"You Draw It: Olympic medals won by China",0,olympics,15,10,24165,45
+29,"You Guess: Population of top 6 countries of the world",0,worldbank,5,3,14591,15
+30,"Top countries at Rio 2016",0,olympics,13,12,19695,39
+31,"Guess the number of Olympic teams",0,olympics,16,8,23047,48
+32,"Guess the number of Turing people",0,shared,6,5,8289,18
+33,"Guess the number of Turing people (2.)",0,shared,10,8,14648,30
+34,"Guess the number of Turing people (3.)",0,shared,10,8,14786,30
+35,"Cambridge Faculty Fellows",0,shared,10,10,14550,30
+36,"New Rio 2016 Golds",0,shared,22,12,33526,66
+37,"Top 10 Government Departments by 2015-16 Expenditure",0,shared,12,11,18612,36
+38,"Most viewed Turing videos on YouTube",0,shared,8,8,13918,24
+39,"UK spending on tertiary education",0,expenditure,4,4,5321,12
+40,"UK spending on tertiary education",0,expenditure,4,4,5393,12
+41,"You Draw It: Carbon emissions of USA (new)",0,worldbank,5,4,11034,15
+42,"GDP and Mark Spitz' medals",0,worldbank,4,4,12966,12
+42,"GDP and Mark Spitz' medals",1,olympics,13,11,24554,39
+43,"Video views per date",0,shared,6,6,9598,18
+44,"Classification of the Functions of Government (COFOG)",0,shared,8,6,11391,37
+45,"Compost: CO2 emissions line chart",0,worldbank,4,4,9257,12
+45,"Compost: CO2 emissions line chart",1,worldbank,4,4,9247,12
+46,"Compost: Top polluters bar chart",0,worldbank,5,4,9531,28
+47,"Unemployment in Italy",0,worldbank,4,3,14318,12
+47,"Unemployment in Italy",1,worldbank,4,3,14386,12
+48,"You Draw It: United Kingdom CO2 emissions with axis labels",0,worldbank,4,4,9265,12
+49,"Guess the number of Olympic teams",0,shared,13,9,18502,39
+50,"John vs. James in Olympic games",0,shared,22,17,33701,66
+50,"John vs. James in Olympic games",1,shared,22,16,33701,66
+54,"Turing Event visits",0,shared,10,9,13988,30
+55,"Number of attendees per kind of event",0,shared,16,11,23091,61
+56,"Tomas' papers at the Turing",0,shared,7,7,9838,21
+57,"Price of Gold 1969-2017",0,shared,6,5,8314,18
+58,"Exchange Rate of Pound Sterling to US Dollar 2010-2017",0,shared,6,4,8432,18
+59,"Historical FTSE100 2009-2016",0,shared,6,5,8387,18
+60,"Guess the number of Turing people",0,shared,14,9,19609,42
+61,"Total number of YouTube views",0,shared,10,7,20085,30
+62,"Guess the number of Turing people",0,shared,14,9,19860,42
+63,"FTSE100: Moving average",0,shared,12,9,17085,36
+64,"Mortality Rate in USA",0,worldbank,5,4,11816,15
+64,"Mortality Rate in USA",1,worldbank,5,4,11816,15
+65,"MozFest - Government expenditure",0,expenditure,5,2,6856,15
+66,"MozFest - University enrolment",0,worldbank,5,4,16186,15
+66,"MozFest - University enrolment",1,worldbank,5,4,16166,15
+66,"MozFest - University enrolment",2,worldbank,5,4,15944,15
+67,"MozFest - Number of Olympic teams",0,olympics,10,9,14128,30
+68,"MozFest - Turing fellows",0,shared,14,10,20075,42
+69,"MozFest - Guess US emissions",0,worldbank,4,3,9233,12
+70,"MozFest - Guess number of gold medals",0,olympics,9,7,12817,27
+71,"MozFest - University enrolment",0,worldbank,5,3,16555,15
+71,"MozFest - University enrolment",1,worldbank,5,4,16582,15
+71,"MozFest - University enrolment",2,worldbank,5,3,16510,15
+71,"MozFest - University enrolment",3,worldbank,5,4,15736,15
+72,"MozFest - Trees in Linz, Austria",0,shared,14,7,20947,42
+73,"Libraries",0,shared,12,7,16435,36
+75,"Gender Pay Gap",0,shared,16,7,25363,48
+76,"tgergg",0,olympics,9,4,12354,27
+77,"Trade war between US and China",0,shared,7,5,9567,21
+78,"Imports from USA to China in 2016 (billions of $)",0,shared,6,5,8095,18
+79,"Imports from China to USA in 2016 (billions of $)",0,shared,6,5,8071,18
+80,"Trade war between US and China (with legend)",0,shared,7,6,9668,21
+81,"Guess UK government expenditure",0,expenditure,5,3,6896,15
+83,"US v China",0,worldbank,4,4,9129,12
+83,"US v China",1,worldbank,4,4,9119,12
+84,"Kent Lords travel expenses ",0,shared,12,12,20448,36
+85,"If Phelps was a country",0,olympics,11,9,19652,33
+85,"If Phelps was a country",1,olympics,9,7,12795,27
+86,"If Phelps was a country (nicer colors)",0,olympics,11,8,20051,33
+86,"If Phelps was a country (nicer colors)",1,olympics,9,6,13164,27
+87,"Who does the Doctor fight most frequently?",0,drWho,17,13,29696,64
+90,"CO2 emissions -- USA vs China",0,worldbank,4,4,9181,12
+90,"CO2 emissions -- USA vs China",1,worldbank,4,4,9171,12

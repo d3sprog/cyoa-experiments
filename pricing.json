@@ -1,0 +1,16 @@
+{
+  "_comment": "USD per 1M tokens. Keys are the model slugs used in result filenames (a vendor prefix's '/' is flattened to '-'). Read by estimate-cost.js and results.ipynb so the two never disagree.",
+  "_updated": "2026-09-20",
+  "_sources": {
+    "anthropic": "https://docs.claude.com/en/docs/about-claude/pricing",
+    "jev": "https://openrouter.ai/typesafe/jev-1.13"
+  },
+  "models": {
+    "claude-haiku-4-5": { "input": 1.0, "output": 5.0 },
+    "claude-sonnet-5": { "input": 2.0, "output": 10.0 },
+    "claude-opus-5": { "input": 5.0, "output": 25.0 },
+    "claude-opus-4-7": { "input": 5.0, "output": 25.0 },
+    "claude-sonnet-4-6": { "input": 3.0, "output": 15.0 },
+    "typesafe-jev-1.13": { "input": 0.042, "output": 0.0 }
+  }
+}
