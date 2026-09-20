@@ -10,7 +10,7 @@ import { runEval, withRetry, MAX_OPTIONS } from './runner.js';
 // OpenRouter serves Jev from a dedicated "decisions" endpoint rather than through
 // chat completions. TypeSafe's own API takes the same body at
 // https://api.typesafe.ai/v1/systemone, so this is switchable if we get direct access.
-const ENDPOINT = process.env.JEV_ENDPOINT ?? 'https://openrouter.ai/api/alpha/decisions';
+export const ENDPOINT = process.env.JEV_ENDPOINT ?? 'https://openrouter.ai/api/alpha/decisions';
 
 const KNOWN_MODELS = [
   'typesafe/jev-1.13',
@@ -20,13 +20,13 @@ const KNOWN_MODELS = [
 
 const TASK = 'Which of the available options should be picked next to build the query described in the state?';
 
-const apiKey = config.OPENROUTER_API_KEY ?? process.env.OPENROUTER_API_KEY;
+export const apiKey = config.OPENROUTER_API_KEY ?? process.env.OPENROUTER_API_KEY;
 
 // ── decisions API ─────────────────────────────────────────────────────────────
 
 // fetch only rejects on network failure, so non-2xx responses are turned into errors
 // carrying the status for withRetry to classify.
-function classifyError(e) {
+export function classifyError(e) {
   const status = e?.status ?? 0;
   const isRateLimit = status === 429;
   const isTransient = status >= 500 || e?.name === 'TypeError'; // TypeError = network failure
@@ -37,7 +37,7 @@ function classifyError(e) {
   };
 }
 
-async function postDecision(body) {
+export async function postDecision(body) {
   const res = await fetch(ENDPOINT, {
     method: 'POST',
     headers: {

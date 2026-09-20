@@ -29,9 +29,35 @@ export const SERIES_OPS = new Set([
   'setProperties', 'map', 'append',
 ]);
 
+// ── CSV ───────────────────────────────────────────────────────────────────────
+
+// Quote a value only when it needs it. Member names and snippet titles are free text
+// and do contain commas, so every text field must go through this.
+export function csvCell(value) {
+  if (value === null || value === undefined) return '';
+  const s = String(value);
+  return /["\n\r,]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+}
+
 // ── retry wrapper ─────────────────────────────────────────────────────────────
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+// Runs append to these files for twenty minutes at a stretch, so anything that opens one
+// meanwhile — a notebook, Excel, an indexer — can hold a brief Windows lock. Losing an
+// entire run to a transient EBUSY is not worth it, so retry a few times before giving up.
+export async function appendRow(path, line) {
+  for (let attempt = 1; ; attempt++) {
+    try {
+      appendFileSync(path, line);
+      return;
+    } catch (e) {
+      if ((e.code !== 'EBUSY' && e.code !== 'EPERM' && e.code !== 'EACCES') || attempt > 20) throw e;
+      log.trace(`\n  ${path} locked (${e.code}) — retrying ${attempt}/20...`);
+      await sleep(250);
+    }
+  }
+}
 
 // `classify` maps a thrown error to { retryable, retryAfterMs, label } so each
 // front-end can recognise its own transport's rate-limit and transient failures.
@@ -122,10 +148,17 @@ export async function* scoreChain(entities, snippet, chain, ask, maxOptions, dry
       const correct = pickIdx === askTruthIdx;
       const pick = pickIdx !== null ? askMembers[pickIdx]?.Name ?? null : null;
 
+      // truthIdx and the menu sizes are included so a consumer can score the answer
+      // against the ground truth; `detail` is whatever the ask chose to attach
+      // (rank-jev.js uses it for the probability distribution). runEval ignores both.
       yield {
         pending: false, step, pick, correct,
         inputTokens: answer.inputTokens ?? 0,
         outputTokens: answer.outputTokens ?? 0,
+        truthIdx: askTruthIdx,
+        nOptions: askMembers.length,
+        nMembers: members.length,
+        detail: answer.detail ?? null,
       };
     }
 
@@ -199,7 +232,7 @@ async function dryRun(entities, testSnippets, maxOptions, output) {
     mkdirSync(output, { recursive: true });
     const csvPath = join(output, 'dry-run.csv');
     const lines = rows.map(r =>
-      `${r.id},"${r.title.replace(/"/g, '""')}",${r.chainIdx},${r.provider},${r.steps},0,0,0`);
+      [r.id, csvCell(r.title), r.chainIdx, csvCell(r.provider), r.steps, 0, 0, 0].join(','));
     writeFileSync(csvPath, CSV_HEADER + lines.join('\n') + '\n');
     log.trace(`\nStep counts written to ${csvPath}`);
   }
@@ -296,8 +329,10 @@ export async function runEval({ model, promptLabel, maxOptions, ask, opts }) {
       grandOut += chainOut;
 
       if (csvPath) {
-        const title = snippet.title.replace(/"/g, '""');
-        appendFileSync(csvPath, `${snippet.id},"${title}",${chainIdx},${chain.provider},${chainTotal},${chainCorrect},${chainIn},${chainOut}\n`);
+        await appendRow(csvPath, [
+          snippet.id, csvCell(snippet.title), chainIdx, csvCell(chain.provider),
+          chainTotal, chainCorrect, chainIn, chainOut,
+        ].join(',') + '\n');
       }
     }
 

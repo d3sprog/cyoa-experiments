@@ -112,6 +112,46 @@ One difference from `score.js` is worth keeping in mind when reading the numbers
 Since Jev has no system-prompt concept, `-s` puts the prompt text into the question's
 structured `instructions` as a `guidance` field instead.
 
+### `rank-jev.js` — Per-step ranking log
+
+`score-jev.js` records *whether* each step was right. This records **how** right. Every Jev
+`choice` answer carries a full probability distribution over the options, and the scorer keeps
+only the argmax — which collapses "the correct member ranked second at p=0.45" and "never
+considered it" into the same `0`.
+
+```
+node rank-jev.js [-n 61] [-p provider] [-m model] [-s prompt] [-o dir] [-r file]
+```
+
+It is a separate command rather than a flag, so the scorers and their resume logic stay
+untouched. It repeats the Jev calls, costing about what a Jev scoring run costs (~$0.03 for all
+61 snippets). Output goes to `<dir>/steps/`, leaving `results/*.csv` — what `results.ipynb`
+reads — alone.
+
+One row per step:
+
+| Column | Meaning |
+|--------|---------|
+| `snippet_id`, `chain_index`, `step_index`, `provider` | where the step sits |
+| `step` | the ground-truth member name |
+| `n_options`, `n_members` | menu size shown vs. the full member list (they differ on the 15 steps sampled down to 255) |
+| `api_called` | `0` for a forced single-option menu, which has no distribution |
+| `correct` | whether the model's choice matched |
+| `truth_rank`, `truth_tied`, `truth_prob` | where the correct member ranked, how many options share its probability, and its share of the mass |
+| `top1_name`, `top1_prob`, `top2_name`, `top2_prob` | what won, and what nearly did |
+| `confidence`, `entropy_bits` | how peaked the distribution was |
+| `input_tokens`, `output_tokens` | per-step cost |
+
+**`truth_tied` matters more than it looks.** The distributions are sparse — in one worldbank
+menu 131 of 145 options came back at exactly `0.0`, so the correct member's "rank 15" is sort
+order, not a measurement. `ranking.ipynb` uses this column to drop those rows from rank metrics
+instead of averaging noise. It also catches the opposite case: an exact two-way tie where the
+truth ranks 1 but the argmax picks the other option, so `correct = 0` while `truth_rank = 1`.
+
+Analysed by `ranking.ipynb` (separate from `results.ipynb`): top-k accuracy and MRR, a
+calibration/reliability diagram, a confidence-gated auto-advance curve, and the most frequent
+confusion pairs.
+
 ### `estimate-cost.js` — What a run will cost
 
 Walks the same chains the scorers do and builds the exact prompt for every step, then
@@ -202,6 +242,7 @@ score.js          Evaluation entry point — Anthropic models
 score-jev.js      Evaluation entry point — Jev, via OpenRouter
 runner.js         Shared chain walk, CSV writing and console output
 jev-test.js       Standalone Jev API check (no server needed)
+rank-jev.js       Per-step ranking log for Jev (-> results/steps/)
 estimate-cost.js  Prices a run before it happens, without scoring it
 pricing.json      USD per 1M tokens, shared by the estimator and the notebook
 extract.js        Extracts chains from gallery snippets
@@ -223,6 +264,8 @@ prompts/
 
 results/
   *.csv                    Result CSVs from evaluation runs
+  steps/*.csv              Per-step ranking logs from rank-jev.js
+  legacy-500-cap/          Pre-Jev runs at the old 500-option cap
   results.ipynb            Jupyter notebook with analysis and charts
   *.png                    Charts exported by the notebook
 
@@ -264,6 +307,56 @@ accuracy at 1/20th of Haiku's cost and 1/53rd of Sonnet's** — it bills $0.042/
 and nothing for output, which is why its quarter-million output tokens are free.
 
 Total spend for the whole sweep was $4.22, against a $4.46 prediction from `estimate-cost.js`.
+
+### Where the right answer actually sits
+
+`rank-jev.js` logs Jev's whole distribution, not just its pick. Over all 665 steps, on rows
+where nothing ties with the correct member (11.6% are dropped as tied):
+
+| | top-1 | top-3 | top-5 | MRR |
+|---|-------|-------|-------|-----|
+| no prompt | 61.0% | 88.5% | **98.3%** | 0.759 |
+| with prompt | 76.5% | 95.4% | **99.3%** | 0.859 |
+
+**The correct member is in the top 5 essentially always, prompt or not.** The system prompt
+moves top-1 by 15 points but top-5 by barely one. That reframes the headline accuracy: the
+model is not failing to find the right member, it is failing to pick between a handful of
+plausible ones. An editor that reorders the completion list rather than replacing it would be
+right ~99% of the time within five entries.
+
+### Calibration
+
+Jev is **systematically overconfident on this domain** — every bucket falls below the diagonal
+in `results/calibration.png`. At a predicted 0.95 it is right ~90% of the time; at 0.55, ~32%.
+The ordering is monotonic, so the probabilities rank correctly and confidence gating works, but
+they should not be read as probabilities without fitting them first.
+
+### Confidence-gated auto-advance
+
+Measured, with the prompt — what an editor would get by auto-selecting only above a threshold:
+
+| Confidence | Steps auto-advanced | Accuracy when auto | Accuracy when deferred |
+|------------|--------------------|--------------------|------------------------|
+| ≥ 0.50 | 78.8% | 78.4% | 31.7% |
+| ≥ 0.70 | 59.1% | 86.3% | 42.8% |
+| ≥ 0.80 | 46.7% | 91.9% | 48.0% |
+| ≥ 0.95 | 28.2% | 96.8% | 57.4% |
+
+### Confusable member names
+
+The most frequent mistakes are the same few pairs, which looks like a naming problem in The
+Gamma rather than a model problem:
+
+| Correct member | What won instead | Times |
+|----------------|------------------|-------|
+| `then` | `preview` | 38 |
+| `get series` | `get the data` | 28 |
+| `group data` | `get the data` | 19 |
+| `filter data` | `get the data` | 16 |
+| `paging` | `get the data` | 11 |
+
+`get the data` absorbs probability mass from four different operations. See `ranking.ipynb` for
+the full tables, including menus ranked by distribution entropy.
 
 Earlier numbers — `claude-haiku-4-5` and `claude-opus-4-7` at a 500-option cap — are kept in
 `results/legacy-500-cap/` and are not comparable with these.

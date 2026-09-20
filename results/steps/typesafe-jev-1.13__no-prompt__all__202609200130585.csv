@@ -1,0 +1,666 @@
+snippet_id,chain_index,step_index,provider,step,n_options,n_members,api_called,correct,truth_rank,truth_tied,truth_prob,top1_name,top1_prob,top2_name,top2_prob,confidence,entropy_bits,input_tokens,output_tokens
+23,0,0,olympics,filter data,9,9,1,0,5,5,0.000000,get the data,0.900000,group data,0.070000,0.8800,0.5847,425,92
+23,0,1,olympics,Games is,37,37,1,1,1,1,0.480000,Games is,0.480000,Medal is,0.220000,0.4500,2.2017,671,361
+23,0,2,olympics,Rio (2016),29,29,1,1,1,1,1.000000,Rio (2016),1.000000,preview,0.000000,1.0000,0.0000,738,392
+23,0,3,olympics,then,74,74,1,1,1,2,0.310000,and Medal is,0.310000,then,0.310000,0.3000,2.4594,1039,750
+23,0,4,olympics,group data,9,9,1,1,1,1,0.900000,group data,0.900000,sort data,0.060000,0.8800,0.5985,448,91
+23,0,5,olympics,by Athlete,13,13,1,1,1,1,0.560000,by Athlete,0.560000,by Gold,0.290000,0.5200,1.6501,481,124
+23,0,6,olympics,sum Gold,43,43,1,1,1,1,0.750000,sum Gold,0.750000,count distinct Gold,0.130000,0.7300,1.2547,742,408
+23,0,7,olympics,then,28,28,1,0,2,1,0.340000,preview,0.350000,then,0.340000,0.3100,2.0924,640,285
+23,0,8,olympics,sort data,9,9,1,1,1,1,0.940000,sort data,0.940000,get the data,0.020000,0.9400,0.4625,468,91
+23,0,9,olympics,by Gold descending,6,6,1,1,1,1,0.920000,by Gold descending,0.920000,then,0.030000,0.9100,0.5271,454,70
+23,0,10,olympics,then,4,4,1,1,1,1,0.680000,then,0.680000,preview,0.300000,0.5700,1.0323,447,53
+23,0,11,olympics,paging,9,9,1,0,7,1,0.040000,get the data,0.270000,get series,0.260000,0.1700,2.6094,483,92
+23,0,12,olympics,take(8),4,4,1,1,1,1,0.450000,take,0.450000,then,0.350000,0.2700,1.5702,448,46
+24,0,0,olympics,filter data,9,9,1,0,4,3,0.010000,get the data,0.830000,group data,0.110000,0.8100,0.9245,425,92
+24,0,1,olympics,Games is,37,37,1,1,1,1,0.450000,Games is,0.450000,Medal is,0.180000,0.4200,2.3636,671,361
+24,0,2,olympics,London (2012),29,29,1,1,1,1,1.000000,London (2012),1.000000,preview,0.000000,1.0000,0.0000,738,392
+24,0,3,olympics,then,74,74,1,1,1,1,0.340000,then,0.340000,and Medal is,0.270000,0.3200,2.4876,1039,750
+24,0,4,olympics,group data,9,9,1,1,1,1,0.800000,group data,0.800000,get series,0.100000,0.7800,1.0240,448,91
+24,0,5,olympics,by Athlete,13,13,1,1,1,1,0.590000,by Athlete,0.590000,by Gold,0.330000,0.5400,1.3809,481,124
+24,0,6,olympics,sum Gold,43,43,1,1,1,1,0.680000,sum Gold,0.680000,count distinct Gold,0.170000,0.6700,1.4178,742,408
+24,0,7,olympics,then,28,28,1,1,1,1,0.410000,then,0.410000,preview,0.300000,0.3800,2.0927,640,285
+24,0,8,olympics,sort data,9,9,1,1,1,1,0.930000,sort data,0.930000,filter data,0.020000,0.9200,0.4360,468,91
+24,0,9,olympics,by Gold descending,6,6,1,1,1,1,0.930000,by Gold descending,0.930000,then,0.030000,0.9000,0.4749,454,70
+24,0,10,olympics,then,4,4,1,1,1,1,0.590000,then,0.590000,preview,0.390000,0.4600,1.1118,447,53
+24,0,11,olympics,paging,9,9,1,0,6,2,0.040000,get series,0.320000,get the data,0.250000,0.2200,2.5240,483,91
+24,0,12,olympics,take(8),4,4,1,0,2,1,0.370000,then,0.420000,take,0.370000,0.2400,1.5872,448,46
+25,0,0,olympics,group data,9,9,1,0,2,1,0.170000,get the data,0.770000,group data,0.170000,0.7300,1.0436,411,92
+25,0,1,olympics,by Games,13,13,1,0,3,1,0.120000,by Team,0.550000,by Year,0.320000,0.5000,1.4339,443,123
+25,0,2,olympics,average Year,43,43,1,0,3,41,0.000000,count distinct Team,0.990000,and Team,0.010000,0.9800,0.0808,703,409
+25,0,3,olympics,count distinct Team,28,28,1,1,1,1,1.000000,count distinct Team,1.000000,preview,0.000000,0.9900,0.0000,601,287
+25,0,4,olympics,then,26,26,1,0,2,1,0.180000,preview,0.690000,then,0.180000,0.6700,1.4093,588,264
+25,0,5,olympics,sort data,9,9,1,1,1,1,0.450000,sort data,0.450000,preview,0.160000,0.3700,2.3184,435,91
+25,0,6,olympics,by Year,8,8,1,1,1,1,0.480000,by Year,0.480000,preview,0.140000,0.4000,2.1553,434,84
+25,0,7,olympics,then,6,6,1,0,2,1,0.220000,preview,0.700000,then,0.220000,0.6400,1.2172,428,70
+25,0,8,olympics,get series,9,9,1,0,3,1,0.180000,preview,0.440000,get the data,0.260000,0.3600,1.9837,449,90
+25,0,9,olympics,with key Year,4,4,1,1,1,1,0.720000,with key Year,0.720000,preview,0.160000,0.6300,1.2415,421,54
+25,0,10,olympics,and value Team,4,4,1,1,1,1,0.410000,and value Team,0.410000,and value Year,0.380000,0.2000,1.6970,427,54
+26,0,0,olympics,group data,9,9,1,0,2,1,0.230000,get the data,0.710000,group data,0.230000,0.6700,1.1571,419,92
+26,0,1,olympics,by Athlete,13,13,1,1,1,1,0.990000,by Athlete,0.990000,by Medal,0.010000,0.9800,0.0808,451,124
+26,0,2,olympics,sum Gold,43,43,1,0,9,2,0.010000,count all,0.520000,count distinct Medal,0.180000,0.5000,2.2478,712,408
+26,0,3,olympics,sum Silver,28,28,1,1,1,1,0.670000,sum Silver,0.670000,count all,0.190000,0.6400,1.5564,610,286
+26,0,4,olympics,sum Bronze,25,25,1,1,1,1,0.970000,sum Bronze,0.970000,count all,0.010000,0.9600,0.2419,593,261
+26,0,5,olympics,concatenate values of Discipline,22,22,1,0,2,1,0.290000,count all,0.390000,concatenate values of Discipline,0.290000,0.3500,2.2561,576,236
+26,0,6,olympics,concatenate values of Team,20,20,1,1,1,1,0.580000,concatenate values of Team,0.580000,count all,0.320000,0.5500,1.5101,566,219
+26,0,7,olympics,then,18,18,1,0,3,1,0.050000,count all,0.750000,count distinct Medal,0.110000,0.7300,1.3956,556,194
+26,0,8,olympics,sort data,9,9,1,1,1,1,0.880000,sort data,0.880000,windowing,0.060000,0.8500,0.7045,466,91
+26,0,9,olympics,by Gold descending,14,14,1,1,1,1,0.540000,by Gold descending,0.540000,by Athlete descending,0.200000,0.5100,1.9743,512,138
+26,0,10,olympics,and by Silver descending,12,12,1,1,1,1,0.570000,and by Silver descending,0.570000,then,0.170000,0.5300,1.8494,513,132
+26,0,11,olympics,and by Bronze descending,10,10,1,1,1,1,0.870000,and by Bronze descending,0.870000,and by Bronze,0.110000,0.8500,0.6380,503,113
+26,0,12,olympics,then,8,8,1,1,1,1,0.600000,then,0.600000,preview,0.350000,0.5300,1.2569,493,91
+26,0,13,olympics,paging,9,9,1,0,3,1,0.140000,windowing,0.490000,filter data,0.250000,0.4200,1.9587,495,92
+26,0,14,olympics,take(10),4,4,1,1,1,1,0.930000,take,0.930000,then,0.050000,0.9100,0.4463,460,46
+27,0,0,worldbank,byCountry,2,2,1,0,2,1,0.490000,byYear,0.510000,byCountry,0.490000,0.0300,0.9997,392,38
+27,0,1,worldbank,United States,254,254,1,1,1,1,1.000000,United States,1.000000,Arab World,0.000000,1.0000,0.0000,2525,2397
+27,0,2,worldbank,Climate Change,22,22,1,1,1,1,0.590000,Climate Change,0.590000,Environment,0.360000,0.5700,1.2319,555,210
+27,0,3,worldbank,CO2 emissions (kt),67,67,1,1,1,1,0.980000,CO2 emissions (kt),0.980000,CO2 emissions (metric tons per capita),0.010000,0.9700,0.1614,1563,1200
+27,0,4,worldbank,take(10),26,26,1,0,3,1,0.100000,filter,0.410000,preview,0.140000,0.3800,2.8430,581,225
+28,0,0,olympics,filter data,9,9,1,0,3,1,0.010000,get the data,0.960000,get series,0.030000,0.9500,0.2747,450,92
+28,0,1,olympics,Team is,37,37,1,0,2,1,0.320000,Year is greater than,0.420000,Team is,0.320000,0.3900,2.1505,696,363
+28,0,2,olympics,China,150,150,1,1,1,1,1.000000,China,1.000000,preview,0.000000,0.9900,0.0000,1548,1316
+28,0,3,olympics,then,74,74,1,0,6,2,0.020000,and Year is greater than,0.650000,and Year is in range,0.090000,0.6400,1.9384,1058,754
+28,0,4,olympics,group data,9,9,1,0,2,1,0.240000,get series,0.260000,group data,0.240000,0.1700,2.4489,467,91
+28,0,5,olympics,by Games,13,13,1,1,1,1,0.750000,by Games,0.750000,by Year,0.230000,0.7200,0.9118,500,123
+28,0,6,olympics,average Year,43,43,1,0,13,31,0.000000,count all,0.630000,count distinct Medal,0.090000,0.6100,2.0235,760,408
+28,0,7,olympics,count all,28,28,1,1,1,1,0.390000,count all,0.390000,count distinct Medal,0.310000,0.3600,2.4785,658,286
+28,0,8,olympics,then,27,27,1,1,1,1,0.320000,then,0.320000,preview,0.160000,0.2900,2.9368,656,277
+28,0,9,olympics,sort data,9,9,1,1,1,1,0.470000,sort data,0.470000,get series,0.250000,0.4000,2.1718,491,91
+28,0,10,olympics,by Year,8,8,1,0,2,2,0.180000,then,0.320000,preview,0.180000,0.2300,2.6109,490,83
+28,0,11,olympics,then,6,6,1,1,1,1,0.460000,then,0.460000,preview,0.420000,0.3400,1.5742,484,70
+28,0,12,olympics,get series,9,9,1,1,1,1,0.370000,get series,0.370000,get the data,0.270000,0.2900,2.0689,505,91
+28,0,13,olympics,with key Year,4,4,1,1,1,1,0.420000,with key Year,0.420000,preview,0.240000,0.2200,1.8752,477,54
+28,0,14,olympics,and value count,4,4,1,1,1,1,0.550000,and value count,0.550000,and value Year,0.240000,0.3900,1.6226,483,54
+29,0,0,worldbank,byYear,2,2,1,0,2,1,0.120000,byCountry,0.880000,byYear,0.120000,0.7500,0.5294,383,38
+29,0,1,worldbank,2012,145,145,1,0,14,132,0.000000,2023,0.340000,2020,0.160000,0.3200,2.9089,1825,1619
+29,0,2,worldbank,All Indicators,22,22,1,0,4,1,0.060000,Social Development,0.760000,Millenium development goals,0.080000,0.7400,1.2838,548,210
+29,0,3,worldbank,"Population, total",255,5340,1,1,1,1,1.000000,"Population, total",1.000000,"Logs, Cameroon, $/cum, current$",0.000000,1.0000,0.0000,5140,4878
+29,0,4,worldbank,sortValues(true),26,26,1,0,3,1,0.140000,take,0.430000,maxBy,0.200000,0.4000,2.4730,573,225
+30,0,0,olympics,filter data,9,9,1,0,4,3,0.010000,get the data,0.750000,group data,0.150000,0.7300,1.1897,420,92
+30,0,1,olympics,Games is,37,37,1,0,2,1,0.330000,Medal is,0.450000,Games is,0.330000,0.4300,2.0473,666,362
+30,0,2,olympics,Rio (2016),29,29,1,1,1,1,1.000000,Rio (2016),1.000000,preview,0.000000,1.0000,0.0000,733,392
+30,0,3,olympics,then,74,74,1,0,2,1,0.160000,and Medal is,0.650000,then,0.160000,0.6400,1.7041,1034,752
+30,0,4,olympics,group data,9,9,1,1,1,1,0.840000,group data,0.840000,get series,0.110000,0.8100,0.8262,443,91
+30,0,5,olympics,by Team,13,13,1,1,1,1,0.660000,by Team,0.660000,by Gold,0.280000,0.6300,1.1924,476,123
+30,0,6,olympics,sum Gold,43,43,1,1,1,1,0.800000,sum Gold,0.800000,count distinct Gold,0.090000,0.7900,1.0984,736,408
+30,0,7,olympics,then,28,28,1,0,2,1,0.360000,preview,0.450000,then,0.360000,0.4200,1.8273,634,285
+30,0,8,olympics,sort data,9,9,1,1,1,1,0.920000,sort data,0.920000,get the data,0.040000,0.9000,0.5146,462,91
+30,0,9,olympics,by Gold descending,6,6,1,1,1,1,0.940000,by Gold descending,0.940000,by Gold,0.030000,0.9300,0.4150,446,68
+30,0,10,olympics,then,4,4,1,1,1,1,0.670000,then,0.670000,preview,0.310000,0.5700,1.0438,439,51
+30,0,11,olympics,paging,9,9,1,0,6,1,0.030000,get series,0.380000,get the data,0.310000,0.3100,2.1912,477,91
+30,0,12,olympics,take(8),4,4,1,1,1,1,0.430000,take,0.430000,then,0.360000,0.2400,1.5850,442,46
+31,0,0,olympics,group data,9,9,1,0,3,1,0.080000,get the data,0.680000,get series,0.150000,0.6400,1.5308,419,92
+31,0,1,olympics,by Year,13,13,1,0,2,1,0.360000,by Games,0.500000,by Year,0.360000,0.4500,1.5602,451,123
+31,0,2,olympics,count distinct Team,43,43,1,1,1,1,0.920000,count distinct Team,0.920000,count all,0.040000,0.9100,0.5622,711,409
+31,0,3,olympics,concatenate values of Games,29,29,1,0,9,11,0.010000,preview,0.410000,then,0.140000,0.3900,2.9625,613,289
+31,0,4,olympics,then,27,27,1,0,4,2,0.060000,preview,0.540000,average Year,0.130000,0.5100,2.4128,603,268
+31,0,5,olympics,sort data,9,9,1,0,6,1,0.060000,preview,0.230000,get series,0.200000,0.1400,2.7829,447,90
+31,0,6,olympics,by Year descending,8,8,1,0,2,1,0.200000,preview,0.300000,by Year descending,0.200000,0.2000,2.5658,446,83
+31,0,7,olympics,then,6,6,1,0,2,1,0.330000,preview,0.450000,then,0.330000,0.3400,1.8673,441,70
+31,0,8,olympics,paging,9,9,1,0,7,3,0.010000,preview,0.300000,get series,0.230000,0.2000,2.4753,462,90
+31,0,9,olympics,take(5),4,4,1,1,1,1,0.430000,take,0.430000,preview,0.310000,0.2400,1.7137,427,46
+31,0,10,olympics,sort data,9,9,1,0,8,2,0.010000,get the data,0.250000,preview,0.230000,0.1700,2.7298,470,92
+31,0,11,olympics,by Year,8,8,1,0,2,1,0.250000,by Year descending,0.380000,by Year,0.250000,0.2900,2.4340,469,85
+31,0,12,olympics,then,6,6,1,0,2,1,0.410000,preview,0.420000,then,0.410000,0.3100,1.7552,463,70
+31,0,13,olympics,get series,9,9,1,0,3,1,0.160000,preview,0.230000,get the data,0.210000,0.1300,2.7899,484,90
+31,0,14,olympics,with key Games,4,4,1,0,3,1,0.110000,with key Year,0.540000,preview,0.310000,0.3800,1.5399,456,54
+31,0,15,olympics,and value Team,4,4,1,0,4,1,0.080000,and value Games,0.360000,and value Year,0.300000,0.1500,1.8485,462,54
+32,0,0,shared,by date,2,2,1,1,1,1,0.550000,by date,0.550000,by tag,0.450000,0.0900,0.9928,402,35
+32,0,1,shared,April 2017,10,10,1,1,1,1,1.000000,April 2017,1.000000,May 2017,0.000000,0.9900,0.0000,502,143
+32,0,2,shared,People at the Turing in 2016/2017,1,1,0,1,,,,,,,,,,0,0
+32,0,3,shared,get series,9,9,1,0,5,1,0.030000,get the data,0.610000,group data,0.170000,0.5500,1.6865,483,92
+32,0,4,shared,with key Role,3,3,1,1,1,1,0.780000,with key Role,0.780000,with key Count,0.130000,0.6700,0.9749,447,45
+32,0,5,shared,and value Count,3,3,1,0,2,2,0.300000,and value Role,0.400000,preview,0.300000,0.1000,1.5710,453,45
+33,0,0,shared,by date,2,2,1,1,1,1,0.620000,by date,0.620000,by tag,0.380000,0.2300,0.9580,421,35
+33,0,1,shared,May 2017,10,10,1,1,1,1,1.000000,May 2017,1.000000,April 2017,0.000000,0.9900,0.0000,521,143
+33,0,2,shared,The Alan Turing Institute People (May 2017),8,8,1,1,1,1,0.980000,The Alan Turing Institute People (May 2017),0.980000,"The Alan Turing Institute People (May 2017, corrected)",0.010000,0.9800,0.1614,549,164
+33,0,3,shared,group data,8,8,1,0,3,1,0.080000,get the data,0.580000,filter data,0.250000,0.5100,1.6816,492,83
+33,0,4,shared,by Role,5,5,1,1,1,1,0.890000,by Role,0.890000,by Position,0.100000,0.8600,0.5483,476,58
+33,0,5,shared,count all,15,15,1,0,2,1,0.230000,count distinct Name,0.550000,count all,0.230000,0.5100,2.0649,570,158
+33,0,6,shared,then,10,10,1,0,4,1,0.070000,count distinct Name,0.340000,count distinct Role,0.270000,0.2500,2.4426,540,118
+33,0,7,shared,get series,9,9,1,0,3,1,0.130000,filter data,0.500000,get the data,0.240000,0.4200,1.9529,519,91
+33,0,8,shared,with key Role,3,3,1,1,1,1,0.480000,with key Role,0.480000,with key count,0.400000,0.2200,1.4041,483,45
+33,0,9,shared,and value count,3,3,1,1,1,1,0.420000,and value count,0.420000,and value Role,0.320000,0.1300,1.5570,489,45
+34,0,0,shared,by date,2,2,1,1,1,1,0.700000,by date,0.700000,by tag,0.300000,0.4000,0.8813,428,35
+34,0,1,shared,May 2017,10,10,1,1,1,1,1.000000,May 2017,1.000000,April 2017,0.000000,1.0000,0.0000,528,143
+34,0,2,shared,"The Alan Turing Institute People (May 2017, corrected)",8,8,1,1,1,1,1.000000,"The Alan Turing Institute People (May 2017, corrected)",1.000000,The Alan Turing Institute People (May 2017),0.000000,0.9900,0.0000,556,166
+34,0,3,shared,group data,8,8,1,0,2,2,0.140000,get the data,0.610000,group data,0.140000,0.5400,1.7160,501,83
+34,0,4,shared,by Role,5,5,1,1,1,1,0.920000,by Role,0.920000,by Position,0.080000,0.8900,0.4022,485,58
+34,0,5,shared,count all,15,15,1,0,2,1,0.270000,count distinct Name,0.610000,count all,0.270000,0.5700,1.6023,579,158
+34,0,6,shared,then,10,10,1,0,4,1,0.060000,count distinct Name,0.320000,preview,0.280000,0.2400,2.2666,549,118
+34,0,7,shared,get series,9,9,1,0,2,1,0.250000,get the data,0.340000,get series,0.250000,0.2500,2.2899,528,92
+34,0,8,shared,with key Role,3,3,1,0,2,1,0.420000,with key count,0.430000,with key Role,0.420000,0.1400,1.4598,492,45
+34,0,9,shared,and value count,3,3,1,1,1,1,0.510000,and value count,0.510000,preview,0.270000,0.2700,1.4860,498,45
+35,0,0,shared,by date,2,2,1,1,1,1,0.530000,by date,0.530000,by tag,0.470000,0.0600,0.9974,390,35
+35,0,1,shared,May 2017,10,10,1,1,1,1,1.000000,May 2017,1.000000,April 2017,0.000000,1.0000,0.0000,490,143
+35,0,2,shared,The Alan Turing Institute People (7 May 2017),8,8,1,1,1,1,1.000000,The Alan Turing Institute People (7 May 2017),1.000000,The Alan Turing Institute People (May 2017),0.000000,0.9900,0.0000,518,165
+35,0,3,shared,filter data,8,8,1,1,1,1,0.600000,filter data,0.600000,get the data,0.330000,0.5300,1.3551,462,82
+35,0,4,shared,Position is,13,13,1,0,4,1,0.130000,Position contains,0.390000,Role is,0.230000,0.3200,2.1944,506,126
+35,0,5,shared,Faculty Fellow,12,12,1,1,1,1,1.000000,Faculty Fellow,1.000000,preview,0.000000,1.0000,0.0000,512,126
+35,0,6,shared,and University is,26,26,1,1,1,1,0.490000,and University is,0.490000,preview,0.250000,0.4600,2.2103,634,258
+35,0,7,shared,Cambridge,6,6,1,1,1,1,1.000000,Cambridge,1.000000,preview,0.000000,1.0000,0.0000,472,71
+35,0,8,shared,then,14,14,1,0,2,1,0.180000,preview,0.660000,then,0.180000,0.6300,1.5175,547,144
+35,0,9,shared,get the data,8,8,1,1,1,1,0.680000,get the data,0.680000,preview,0.140000,0.6400,1.5441,494,83
+36,0,0,shared,by date,2,2,1,1,1,1,0.710000,by date,0.710000,by tag,0.290000,0.4300,0.8687,378,35
+36,0,1,shared,May 2017,10,10,1,1,1,1,1.000000,May 2017,1.000000,April 2017,0.000000,1.0000,0.0000,478,143
+36,0,2,shared,Rio 2016 Olympics,8,8,1,1,1,1,1.000000,Rio 2016 Olympics,1.000000,The Alan Turing Institute People (May 2017),0.000000,1.0000,0.0000,506,157
+36,0,3,shared,filter data,9,9,1,0,1,1,0.360000,filter data,0.360000,get the data,0.350000,0.2800,2.1249,450,92
+36,0,4,shared,Games is,37,37,1,0,2,1,0.110000,Medal is,0.720000,Games is,0.110000,0.7100,1.4059,697,362
+36,0,5,shared,Rio (2016),2,2,1,1,1,1,0.990000,Rio (2016),0.990000,preview,0.010000,0.9900,0.0808,415,43
+36,0,6,shared,then,74,74,1,0,6,69,0.000000,and Medal is,0.930000,preview,0.030000,0.9200,0.4485,1065,752
+36,0,7,shared,group data,9,9,1,1,1,1,0.530000,group data,0.530000,filter data,0.340000,0.4800,1.5768,474,91
+36,0,8,shared,by Event,13,13,1,0,7,2,0.010000,by Medal,0.460000,by Gold,0.390000,0.4200,1.7991,507,123
+36,0,9,shared,and Discipline,43,43,1,0,9,35,0.000000,sum Gold,0.670000,and Gold,0.120000,0.6500,1.6842,767,408
+36,0,10,shared,and Team,43,43,1,0,11,33,0.000000,sum Gold,0.600000,and Gold,0.110000,0.5800,2.0666,772,408
+36,0,11,shared,and Gold,43,43,1,0,4,1,0.070000,sum Gold,0.550000,count all,0.120000,0.5300,2.2122,777,408
+36,0,12,shared,then,43,43,1,0,6,2,0.030000,sum Gold,0.500000,count all,0.250000,0.4800,2.2337,782,408
+36,0,13,shared,group data,9,9,1,0,3,2,0.080000,get the data,0.570000,drop columns,0.100000,0.5100,2.1557,503,92
+36,0,14,shared,by Team,5,5,1,0,3,1,0.200000,by Gold,0.370000,preview,0.260000,0.2100,2.0493,479,58
+36,0,15,shared,sum Gold,16,16,1,1,1,1,0.660000,sum Gold,0.660000,count all,0.130000,0.6300,1.7338,576,161
+36,0,16,shared,then,9,9,1,0,2,1,0.340000,preview,0.450000,then,0.340000,0.3700,1.6157,531,103
+36,0,17,shared,sort data,9,9,1,1,1,1,0.580000,sort data,0.580000,get the data,0.210000,0.5300,1.7682,522,91
+36,0,18,shared,by Gold descending,6,6,1,1,1,1,0.630000,by Gold descending,0.630000,by Team descending,0.280000,0.5500,1.4121,506,68
+36,0,19,shared,then,4,4,1,0,2,1,0.220000,preview,0.740000,then,0.220000,0.6600,1.0278,499,51
+36,0,20,shared,paging,9,9,1,0,4,1,0.020000,get the data,0.500000,preview,0.310000,0.4200,1.7331,537,92
+36,0,21,shared,take(8),4,4,1,0,2,1,0.220000,preview,0.560000,take,0.220000,0.4100,1.5263,502,46
+37,0,0,shared,by date,2,2,1,1,1,1,0.770000,by date,0.770000,by tag,0.230000,0.5400,0.7780,427,35
+37,0,1,shared,May 2017,10,10,1,1,1,1,1.000000,May 2017,1.000000,April 2017,0.000000,0.9900,0.0000,527,143
+37,0,2,shared,Central government own expenditure in budgets by departmental group (PESA 2016),8,8,1,1,1,1,1.000000,Central government own expenditure in budgets by departmental group (PESA 2016),1.000000,The Alan Turing Institute People (May 2017),0.000000,1.0000,0.0000,555,171
+37,0,3,shared,group data,9,9,1,0,5,1,0.070000,filter data,0.350000,get the data,0.260000,0.2700,2.2223,513,91
+37,0,4,shared,by Department,12,12,1,0,2,1,0.030000,by 2015-16 Outturn,0.960000,by Department,0.030000,0.9600,0.2747,619,204
+37,0,5,shared,sum 2015-16 Outturn,45,45,1,1,1,1,0.950000,sum 2015-16 Outturn,0.950000,and 2015-16 Outturn,0.040000,0.9400,0.3225,1112,725
+37,0,6,shared,then,31,31,1,0,2,1,0.130000,preview,0.560000,then,0.130000,0.5300,2.0760,919,494
+37,0,7,shared,sort data,9,9,1,1,1,1,0.930000,sort data,0.930000,filter data,0.050000,0.9300,0.3799,541,91
+37,0,8,shared,by 2015-16 Outturn descending,6,6,1,1,1,1,0.870000,by 2015-16 Outturn descending,0.870000,by Department descending,0.090000,0.8500,0.7057,543,95
+37,0,9,shared,then,4,4,1,1,1,1,0.530000,then,0.530000,preview,0.440000,0.3800,1.1859,527,51
+37,0,10,shared,paging,9,9,1,1,1,1,0.380000,paging,0.380000,filter data,0.230000,0.3000,2.2268,565,90
+37,0,11,shared,take(10),4,4,1,1,1,1,0.950000,take,0.950000,then,0.040000,0.9300,0.3225,530,46
+38,0,0,shared,by date,2,2,1,0,2,1,0.280000,by tag,0.720000,by date,0.280000,0.4500,0.8555,393,35
+38,0,1,shared,May 2017,10,10,1,1,1,1,1.000000,May 2017,1.000000,April 2017,0.000000,0.9900,0.0000,493,143
+38,0,2,shared,YouTube views by video,8,8,1,1,1,1,0.990000,YouTube views by video,0.990000,YouTube Views per Date,0.010000,0.9900,0.0808,521,156
+38,0,3,shared,sort data,9,9,1,1,1,1,0.700000,sort data,0.700000,filter data,0.170000,0.6500,1.3263,464,91
+38,0,4,shared,by Views descending,112,112,1,1,1,1,0.960000,by Views descending,0.960000,by Views,0.030000,0.9500,0.2747,1541,1262
+38,0,5,shared,then,110,110,1,0,2,1,0.130000,preview,0.660000,then,0.130000,0.6500,1.8694,1640,1351
+38,0,6,shared,paging,9,9,1,0,2,1,0.300000,filter data,0.430000,paging,0.300000,0.3700,2.1361,479,91
+38,0,7,shared,take(10),4,4,1,1,1,1,0.920000,take,0.920000,then,0.050000,0.8900,0.5061,444,46
+39,0,0,expenditure,byService,2,2,1,1,1,1,0.650000,byService,0.650000,byYear,0.350000,0.2900,0.9341,340,38
+39,0,1,expenditure,Education,12,12,1,1,1,1,0.990000,Education,0.990000,Economic affairs,0.010000,0.9800,0.0808,428,129
+39,0,2,expenditure,bySubService,5,5,1,1,1,1,0.810000,bySubService,0.810000,bySubServiceComponents,0.080000,0.7700,1.0610,382,75
+39,0,3,expenditure,Tertiary education,8,8,1,1,1,1,1.000000,Tertiary education,1.000000,Pre-primary and primary education,0.000000,1.0000,0.0000,418,107
+40,0,0,expenditure,byService,2,2,1,1,1,1,0.620000,byService,0.620000,byYear,0.380000,0.2300,0.9580,351,38
+40,0,1,expenditure,Education,12,12,1,1,1,1,1.000000,Education,1.000000,General public services,0.000000,0.9900,0.0000,439,129
+40,0,2,expenditure,bySubService,5,5,1,1,1,1,0.690000,bySubService,0.690000,bySubServiceComponents,0.150000,0.6100,1.4557,393,75
+40,0,3,expenditure,Tertiary education,8,8,1,1,1,1,1.000000,Tertiary education,1.000000,Pre-primary and primary education,0.000000,1.0000,0.0000,429,107
+41,0,0,worldbank,byCountry,2,2,1,1,1,1,0.640000,byCountry,0.640000,byYear,0.360000,0.2800,0.9427,419,38
+41,0,1,worldbank,United States,254,254,1,1,1,1,1.000000,United States,1.000000,Arab World,0.000000,1.0000,0.0000,2552,2397
+41,0,2,worldbank,Climate Change,22,22,1,1,1,1,0.540000,Climate Change,0.540000,Environment,0.410000,0.5200,1.2596,582,210
+41,0,3,worldbank,CO2 emissions (kt),67,67,1,1,1,1,0.980000,CO2 emissions (kt),0.980000,CO2 emissions (metric tons per capita),0.010000,0.9800,0.1614,1590,1200
+41,0,4,worldbank,take(10),26,26,1,0,2,1,0.120000,filter,0.330000,take,0.120000,0.2900,3.1502,608,225
+42,0,0,worldbank,byCountry,2,2,1,1,1,1,0.730000,byCountry,0.730000,byYear,0.270000,0.4600,0.8415,402,38
+42,0,1,worldbank,United States,254,254,1,1,1,1,1.000000,United States,1.000000,Arab World,0.000000,0.9900,0.0000,2535,2397
+42,0,2,worldbank,Economy & Growth,22,22,1,1,1,1,0.990000,Economy & Growth,0.990000,All Indicators,0.010000,0.9900,0.0808,565,213
+42,0,3,worldbank,GDP per capita (current US$),255,265,1,1,1,1,0.900000,GDP per capita (current US$),0.900000,GDP per capita (constant 2005 US$),0.090000,0.8900,0.5159,4584,4213
+42,1,0,olympics,filter data,9,9,1,0,3,3,0.010000,get the data,0.760000,get series,0.210000,0.7300,0.9730,450,92
+42,1,1,olympics,Team is,37,37,1,0,13,25,0.000000,Athlete is,0.510000,Medal is,0.270000,0.4900,2.1359,696,362
+42,1,2,olympics,United States,150,150,1,1,1,1,0.940000,United States,0.940000,Individual Olympic athletes,0.060000,0.9400,0.3274,1548,1317
+42,1,3,olympics,and Athlete is,74,74,1,1,1,1,0.460000,and Athlete is,0.460000,and Medal is,0.410000,0.4400,1.8064,1059,753
+42,1,4,olympics,Mark Spitz,255,3318,1,1,1,1,1.000000,Mark Spitz,1.000000,Rhoshii Wells,0.000000,1.0000,0.0000,2817,2684
+42,1,5,olympics,then,38,38,1,0,4,6,0.010000,and Medal is,0.880000,and Medal contains,0.040000,0.8700,0.8596,749,393
+42,1,6,olympics,group data,9,9,1,1,1,1,0.540000,group data,0.540000,get series,0.160000,0.4800,1.9871,481,91
+42,1,7,olympics,by Year,13,13,1,1,1,1,0.870000,by Year,0.870000,by Gold,0.060000,0.8500,0.7558,514,123
+42,1,8,olympics,sum Gold,43,43,1,1,1,1,0.370000,sum Gold,0.370000,count distinct Gold,0.250000,0.3400,2.4031,774,408
+42,1,9,olympics,then,28,28,1,0,2,1,0.350000,preview,0.480000,then,0.350000,0.4500,1.9366,672,285
+42,1,10,olympics,get series,9,9,1,0,2,1,0.270000,get the data,0.320000,get series,0.270000,0.2500,2.2689,500,92
+42,1,11,olympics,with key Year,3,3,1,1,1,1,0.730000,with key Year,0.730000,preview,0.190000,0.6000,1.0782,464,45
+42,1,12,olympics,and value Gold,3,3,1,1,1,1,0.530000,and value Gold,0.530000,preview,0.320000,0.3000,1.4220,470,45
+43,0,0,shared,by date,2,2,1,1,1,1,1.000000,by date,1.000000,by tag,0.000000,1.0000,0.0000,372,35
+43,0,1,shared,May 2017,10,10,1,1,1,1,1.000000,May 2017,1.000000,April 2017,0.000000,0.9900,0.0000,472,143
+43,0,2,shared,YouTube Views per Date,8,8,1,1,1,1,0.980000,YouTube Views per Date,0.980000,YouTube views by video,0.020000,0.9800,0.1414,500,156
+43,0,3,shared,get series,9,9,1,0,2,1,0.140000,get the data,0.600000,get series,0.140000,0.5600,1.8786,443,92
+43,0,4,shared,with key date,55,55,1,0,4,52,0.000000,with key views,0.940000,with key youtube_red_views,0.040000,0.9300,0.3361,996,686
+43,0,5,shared,and value views,55,55,1,1,1,1,0.980000,and value views,0.980000,and value youtube_red_views,0.020000,0.9700,0.1414,1002,686
+44,0,0,shared,by date,2,2,1,0,2,1,0.460000,by tag,0.540000,by date,0.460000,0.0700,0.9954,392,35
+44,0,1,shared,May 2017,10,10,1,1,1,1,1.000000,May 2017,1.000000,April 2017,0.000000,0.9900,0.0000,492,143
+44,0,2,shared,COFOG Structure,8,8,1,1,1,1,1.000000,COFOG Structure,1.000000,The Alan Turing Institute People (May 2017),0.000000,1.0000,0.0000,520,154
+44,0,3,shared,filter data,8,8,1,0,3,1,0.130000,get the data,0.500000,get series,0.200000,0.4400,1.9987,453,83
+44,0,4,shared,Service is,7,7,1,1,1,1,0.440000,Service is,0.440000,Service contains,0.190000,0.3400,2.1710,459,82
+44,0,5,shared,Social protection,12,12,1,0,4,1,0.130000,General public services,0.310000,preview,0.170000,0.2600,2.7786,503,127
+44,0,6,shared,then,14,14,1,0,2,1,0.200000,and Subservice is,0.450000,then,0.200000,0.4000,2.3431,537,160
+44,0,7,shared,get the data,8,8,1,1,1,1,0.460000,get the data,0.460000,get series,0.210000,0.3900,2.0213,472,83
+45,0,0,worldbank,byCountry,2,2,1,1,1,1,0.930000,byCountry,0.930000,byYear,0.070000,0.8600,0.3659,373,38
+45,0,1,worldbank,United States,254,254,1,1,1,1,0.830000,United States,0.830000,China,0.170000,0.8200,0.6577,2506,2397
+45,0,2,worldbank,Climate Change,22,22,1,1,1,1,0.710000,Climate Change,0.710000,Environment,0.260000,0.6800,1.0354,536,210
+45,0,3,worldbank,CO2 emissions (kt),67,67,1,1,1,1,0.990000,CO2 emissions (kt),0.990000,Urban population growth (annual %),0.010000,0.9800,0.0808,1544,1200
+45,1,0,worldbank,byCountry,2,2,1,1,1,1,0.920000,byCountry,0.920000,byYear,0.080000,0.8500,0.4022,371,38
+45,1,1,worldbank,China,254,254,1,1,1,1,0.970000,China,0.970000,United States,0.030000,0.9700,0.1944,2504,2396
+45,1,2,worldbank,Climate Change,22,22,1,1,1,1,0.730000,Climate Change,0.730000,Environment,0.220000,0.7100,1.0967,533,210
+45,1,3,worldbank,CO2 emissions (kt),67,67,1,1,1,1,1.000000,CO2 emissions (kt),1.000000,Agricultural land (sq. km),0.000000,0.9900,0.0000,1541,1200
+46,0,0,worldbank,byYear,2,2,1,0,2,1,0.050000,byCountry,0.950000,byYear,0.050000,0.9000,0.2864,357,38
+46,0,1,worldbank,2010,145,145,1,0,6,2,0.050000,2023,0.240000,2020,0.130000,0.2200,3.6105,1799,1619
+46,0,2,worldbank,Climate Change,22,22,1,1,1,1,0.730000,Climate Change,0.730000,Environment,0.220000,0.7200,1.1042,522,210
+46,0,3,worldbank,CO2 emissions (kt),67,67,1,1,1,1,0.980000,CO2 emissions (kt),0.980000,CO2 emissions (metric tons per capita),0.020000,0.9700,0.1414,1530,1200
+46,0,4,worldbank,sortValues(reverse=true),26,26,1,0,2,1,0.170000,take,0.450000,sortValues,0.170000,0.4200,2.4944,548,225
+47,0,0,worldbank,byCountry,2,2,1,1,1,1,0.960000,byCountry,0.960000,byYear,0.040000,0.9300,0.2423,363,38
+47,0,1,worldbank,Italy,254,254,1,1,1,1,1.000000,Italy,1.000000,Arab World,0.000000,1.0000,0.0000,2496,2396
+47,0,2,worldbank,Education,22,22,1,0,5,18,0.000000,Social Protection & Labor,0.780000,Economy & Growth,0.170000,0.7600,0.9664,525,212
+47,0,3,worldbank,"Unemployment, male (% of male labor force)",255,1331,1,1,1,1,0.980000,"Unemployment, male (% of male labor force)",0.980000,"Unemployment, total (% of total labor force)",0.020000,0.9800,0.1414,5562,5444
+47,1,0,worldbank,byCountry,2,2,1,1,1,1,0.970000,byCountry,0.970000,byYear,0.030000,0.9400,0.1944,363,38
+47,1,1,worldbank,Italy,254,254,1,1,1,1,1.000000,Italy,1.000000,Arab World,0.000000,1.0000,0.0000,2496,2396
+47,1,2,worldbank,Education,22,22,1,0,5,18,0.000000,Social Protection & Labor,0.700000,Gender,0.190000,0.6800,1.2410,525,212
+47,1,3,worldbank,"Unemployment, female (% of female labor force)",255,1331,1,1,1,1,1.000000,"Unemployment, female (% of female labor force)",1.000000,"Out-of-school adolescents of lower secondary school age, female (number)",0.000000,0.9900,0.0000,5608,5492
+48,0,0,worldbank,byCountry,2,2,1,1,1,1,0.640000,byCountry,0.640000,byYear,0.360000,0.2700,0.9427,368,38
+48,0,1,worldbank,United Kingdom,254,254,1,1,1,1,1.000000,United Kingdom,1.000000,Arab World,0.000000,1.0000,0.0000,2501,2397
+48,0,2,worldbank,Climate Change,22,22,1,0,2,1,0.440000,Environment,0.520000,Climate Change,0.440000,0.4800,1.2375,531,209
+48,0,3,worldbank,CO2 emissions (kt),67,67,1,1,1,1,0.970000,CO2 emissions (kt),0.970000,CO2 emissions (metric tons per capita),0.020000,0.9600,0.2219,1539,1200
+49,0,0,shared,by date,2,2,1,1,1,1,0.520000,by date,0.520000,by tag,0.480000,0.0400,0.9988,376,35
+49,0,1,shared,June 2017,10,10,1,1,1,1,1.000000,June 2017,1.000000,April 2017,0.000000,0.9900,0.0000,476,143
+49,0,2,shared,Olympic medalists,1,1,0,1,,,,,,,,,,0,0
+49,0,3,shared,group data,9,9,1,1,1,1,0.640000,group data,0.640000,get the data,0.270000,0.5800,1.3449,448,91
+49,0,4,shared,by Year,13,13,1,0,3,11,0.000000,by Team,0.990000,by Games,0.010000,0.9900,0.0808,481,123
+49,0,5,shared,count distinct Team,43,43,1,1,1,1,0.920000,count distinct Team,0.920000,count distinct Games,0.050000,0.9100,0.5061,741,409
+49,0,6,shared,then,29,29,1,0,5,1,0.050000,preview,0.430000,count all,0.210000,0.4000,2.5350,643,289
+49,0,7,shared,sort data,9,9,1,0,6,2,0.050000,get the data,0.360000,preview,0.180000,0.2800,2.5763,468,92
+49,0,8,shared,by Year,6,6,1,0,6,1,0.040000,preview,0.400000,by Year descending,0.210000,0.2700,2.2236,452,66
+49,0,9,shared,then,4,4,1,0,2,1,0.180000,preview,0.740000,then,0.180000,0.6600,1.1018,444,51
+49,0,10,shared,get series,9,9,1,0,3,1,0.070000,preview,0.440000,get the data,0.340000,0.3700,2.1053,482,90
+49,0,11,shared,with key Year,3,3,1,1,1,1,0.510000,with key Year,0.510000,preview,0.400000,0.2800,1.3369,446,45
+49,0,12,shared,and value Team,3,3,1,0,3,1,0.250000,preview,0.480000,and value Year,0.270000,0.2200,1.5183,452,43
+50,0,0,shared,by date,2,2,1,1,1,1,0.640000,by date,0.640000,by tag,0.360000,0.2700,0.9427,411,35
+50,0,1,shared,June 2017,10,10,1,1,1,1,1.000000,June 2017,1.000000,April 2017,0.000000,0.9900,0.0000,511,143
+50,0,2,shared,Olympic medalists,1,1,0,1,,,,,,,,,,0,0
+50,0,3,shared,filter data,9,9,1,1,1,1,0.730000,filter data,0.730000,get the data,0.180000,0.7100,1.2196,483,91
+50,0,4,shared,"Athlete contains(""James"")",37,37,1,1,1,1,0.600000,Athlete contains,0.600000,Athlete is,0.400000,0.5800,0.9710,730,362
+50,0,5,shared,then,74,74,1,0,4,2,0.010000,or Athlete contains,0.810000,and Athlete contains,0.120000,0.7900,0.9319,1089,753
+50,0,6,shared,group data,9,9,1,0,2,3,0.130000,get series,0.550000,group data,0.130000,0.4900,1.8745,498,91
+50,0,7,shared,by Year,13,13,1,1,1,1,0.800000,by Year,0.800000,by Athlete,0.180000,0.7700,0.8157,531,123
+50,0,8,shared,count distinct Athlete,43,43,1,1,1,1,0.500000,count distinct Athlete,0.500000,count all,0.440000,0.4800,1.3398,791,410
+50,0,9,shared,then,29,29,1,1,1,1,0.380000,then,0.380000,preview,0.310000,0.3500,2.0059,692,287
+50,0,10,shared,windowing,9,9,1,1,1,1,0.550000,windowing,0.550000,get series,0.380000,0.4900,1.4023,519,92
+50,0,11,shared,window by Year(5),5,5,1,1,1,1,0.730000,window by Year,0.730000,expanding by Year,0.190000,0.6600,1.1631,506,69
+50,0,12,shared,middle Year,12,12,1,0,7,3,0.020000,mean Year,0.250000,mean Athlete,0.240000,0.1700,2.8316,555,118
+50,0,13,shared,mean Athlete,10,10,1,0,6,3,0.020000,then,0.400000,mean Year,0.230000,0.3200,2.3754,545,100
+50,0,14,shared,then,6,6,1,1,1,1,0.510000,then,0.510000,preview,0.370000,0.4200,1.6073,519,64
+50,0,15,shared,sort data,9,9,1,0,5,1,0.050000,get series,0.400000,filter data,0.210000,0.3300,2.3950,546,91
+50,0,16,shared,by middle Year,6,6,1,0,3,1,0.200000,preview,0.420000,then,0.310000,0.3100,1.8513,534,70
+50,0,17,shared,then,4,4,1,1,1,1,0.620000,then,0.620000,preview,0.320000,0.5100,1.2362,525,53
+50,0,18,shared,get series,9,9,1,1,1,1,0.330000,get series,0.330000,preview,0.270000,0.2500,2.2392,561,91
+50,0,19,shared,with key middle Year,3,3,1,1,1,1,0.580000,with key middle Year,0.580000,preview,0.360000,0.3600,1.2300,527,48
+50,0,20,shared,and value Athlete,3,3,1,0,3,1,0.120000,preview,0.650000,and value middle Year,0.230000,0.4700,1.2587,534,45
+50,0,21,shared,"setProperties(seriesName=""James"")",26,26,1,0,7,4,0.020000,append,0.400000,preview,0.200000,0.3800,2.8156,698,225
+50,1,0,shared,by date,2,2,1,1,1,1,0.700000,by date,0.700000,by tag,0.300000,0.4100,0.8813,411,35
+50,1,1,shared,June 2017,10,10,1,1,1,1,1.000000,June 2017,1.000000,April 2017,0.000000,0.9900,0.0000,511,143
+50,1,2,shared,Olympic medalists,1,1,0,1,,,,,,,,,,0,0
+50,1,3,shared,filter data,9,9,1,1,1,1,0.660000,filter data,0.660000,get the data,0.200000,0.6100,1.4096,483,91
+50,1,4,shared,"Athlete contains(""John"")",37,37,1,1,1,1,0.690000,Athlete contains,0.690000,Athlete is,0.310000,0.6700,0.8932,730,362
+50,1,5,shared,then,74,74,1,0,4,2,0.010000,or Athlete contains,0.820000,and Athlete contains,0.110000,0.8100,0.9037,1089,753
+50,1,6,shared,group data,9,9,1,0,4,1,0.130000,get series,0.400000,windowing,0.200000,0.3300,2.2074,498,91
+50,1,7,shared,by Year,13,13,1,1,1,1,0.740000,by Year,0.740000,by Athlete,0.240000,0.7100,0.9485,531,123
+50,1,8,shared,count distinct Athlete,43,43,1,1,1,1,0.540000,count distinct Athlete,0.540000,count all,0.410000,0.5200,1.2532,791,410
+50,1,9,shared,then,29,29,1,1,1,1,0.380000,then,0.380000,preview,0.280000,0.3400,1.9333,692,287
+50,1,10,shared,windowing,9,9,1,1,1,1,0.620000,windowing,0.620000,get series,0.340000,0.5700,1.2025,519,92
+50,1,11,shared,window by Year(5),5,5,1,1,1,1,0.660000,window by Year,0.660000,expanding by Year,0.240000,0.5700,1.3377,506,69
+50,1,12,shared,middle Year,12,12,1,0,8,3,0.020000,mean Year,0.300000,mean Athlete,0.240000,0.2300,2.8380,555,118
+50,1,13,shared,mean Athlete,10,10,1,0,6,3,0.020000,then,0.360000,mean Year,0.230000,0.2900,2.4300,545,100
+50,1,14,shared,then,6,6,1,1,1,1,0.460000,then,0.460000,preview,0.410000,0.3500,1.6513,519,64
+50,1,15,shared,sort data,9,9,1,0,5,1,0.050000,get series,0.370000,get the data,0.210000,0.2900,2.3467,546,91
+50,1,16,shared,by middle Year,6,6,1,0,3,1,0.130000,preview,0.480000,then,0.300000,0.3800,1.8073,534,70
+50,1,17,shared,then,4,4,1,1,1,1,0.580000,then,0.580000,preview,0.350000,0.4400,1.2959,525,53
+50,1,18,shared,get series,9,9,1,1,1,1,0.330000,get series,0.330000,preview,0.230000,0.2400,2.2054,561,91
+50,1,19,shared,with key middle Year,3,3,1,1,1,1,0.610000,with key middle Year,0.610000,preview,0.340000,0.4100,1.1803,527,48
+50,1,20,shared,and value Athlete,3,3,1,0,3,1,0.130000,preview,0.620000,and value middle Year,0.250000,0.4400,1.3102,534,45
+50,1,21,shared,"setProperties(seriesName=""John"")",26,26,1,0,10,7,0.010000,append,0.440000,preview,0.230000,0.4100,2.6670,698,225
+54,0,0,shared,by date,2,2,1,1,1,1,0.790000,by date,0.790000,by tag,0.210000,0.5800,0.7415,394,35
+54,0,1,shared,July 2017,10,10,1,1,1,1,1.000000,July 2017,1.000000,April 2017,0.000000,1.0000,0.0000,494,143
+54,0,2,shared,Turing Events (3 July 2017),9,9,1,1,1,1,1.000000,Turing Events (3 July 2017),1.000000,"Turing Events (3 July 2017, corrected)",0.000000,1.0000,0.0000,529,168
+54,0,3,shared,windowing,9,9,1,0,6,1,0.020000,get the data,0.340000,group data,0.300000,0.2600,2.1698,471,92
+54,0,4,shared,expanding by Date,5,5,1,0,5,1,0.100000,window by Date,0.320000,preview,0.250000,0.1400,2.2158,456,67
+54,0,5,shared,sum Number,6,6,1,1,1,1,0.960000,sum Number,0.960000,preview,0.020000,0.9500,0.3023,462,65
+54,0,6,shared,then,2,2,1,0,2,1,0.280000,preview,0.720000,then,0.280000,0.4400,0.8555,439,32
+54,0,7,shared,get series,9,9,1,0,3,2,0.120000,get the data,0.460000,preview,0.150000,0.4000,2.3650,494,92
+54,0,8,shared,with key last Date,3,3,1,0,3,1,0.220000,preview,0.530000,with key Number,0.250000,0.2900,1.4660,459,44
+54,0,9,shared,and value Number,3,3,1,0,2,1,0.340000,and value last Date,0.520000,and value Number,0.340000,0.2800,1.4169,466,47
+55,0,0,shared,by date,2,2,1,0,2,1,0.050000,by tag,0.950000,by date,0.050000,0.8900,0.2864,385,35
+55,0,1,shared,July 2017,10,10,1,1,1,1,1.000000,July 2017,1.000000,April 2017,0.000000,1.0000,0.0000,485,143
+55,0,2,shared,"Turing Events (3 July 2017, corrected)",9,9,1,1,1,1,1.000000,"Turing Events (3 July 2017, corrected)",1.000000,Turing Events (3 July 2017),0.000000,1.0000,0.0000,520,170
+55,0,3,shared,filter data,9,9,1,0,6,4,0.000000,group data,0.850000,get the data,0.110000,0.8200,0.7953,464,91
+55,0,4,shared,Kind is not,13,13,1,0,6,4,0.010000,Kind is,0.750000,preview,0.110000,0.7100,1.4166,510,136
+55,0,5,shared,Masterclass,7,7,1,0,6,1,0.020000,External event,0.690000,preview,0.130000,0.6400,1.5475,463,77
+55,0,6,shared,and Kind is not,26,26,1,0,2,1,0.270000,then,0.300000,and Kind is not,0.270000,0.2700,2.8166,650,276
+55,0,7,shared,External event,6,6,1,1,1,1,0.440000,External event,0.440000,Workshop,0.200000,0.3300,2.2105,468,68
+55,0,8,shared,then,14,14,1,1,1,1,0.380000,then,0.380000,preview,0.210000,0.3400,2.3915,552,154
+55,0,9,shared,group data,9,9,1,1,1,1,1.000000,group data,1.000000,preview,0.000000,0.9900,0.0000,497,91
+55,0,10,shared,by Kind,5,5,1,1,1,1,0.990000,by Kind,0.990000,by Number,0.010000,0.9800,0.0808,473,58
+55,0,11,shared,sum Number,15,15,1,1,1,1,0.870000,sum Number,0.870000,count all,0.100000,0.8500,0.6588,559,149
+55,0,12,shared,then,8,8,1,0,2,1,0.130000,preview,0.770000,then,0.130000,0.7300,1.1209,514,91
+55,0,13,shared,get series,9,9,1,0,5,1,0.050000,preview,0.330000,get the data,0.300000,0.2400,2.1356,516,90
+55,0,14,shared,with key Kind,3,3,1,1,1,1,0.430000,with key Kind,0.430000,preview,0.350000,0.1300,1.5342,480,45
+55,0,15,shared,and value Number,3,3,1,0,2,1,0.340000,preview,0.530000,and value Number,0.340000,0.2900,1.3973,486,43
+56,0,0,shared,by date,2,2,1,1,1,1,0.530000,by date,0.530000,by tag,0.470000,0.0500,0.9974,386,35
+56,0,1,shared,July 2017,10,10,1,1,1,1,1.000000,July 2017,1.000000,April 2017,0.000000,1.0000,0.0000,486,143
+56,0,2,shared,"Turing Papers (3 July 2017, raw)",9,9,1,1,1,1,1.000000,"Turing Papers (3 July 2017, raw)",1.000000,Turing Events (3 July 2017),0.000000,0.9900,0.0000,521,170
+56,0,3,shared,filter data,8,8,1,0,2,1,0.410000,get the data,0.450000,filter data,0.410000,0.3600,1.6884,457,83
+56,0,4,shared,"Details contains(""Petricek"")",7,7,1,0,2,1,0.260000,Name contains,0.530000,Details contains,0.260000,0.4500,1.6046,457,76
+56,0,5,shared,then,14,14,1,0,6,1,0.020000,and Details contains,0.500000,and Name contains,0.200000,0.4700,2.2103,524,146
+56,0,6,shared,get the data,8,8,1,1,1,1,0.360000,get the data,0.360000,filter data,0.350000,0.2800,2.2108,471,83
+57,0,0,shared,by date,2,2,1,1,1,1,0.640000,by date,0.640000,by tag,0.360000,0.2900,0.9427,377,35
+57,0,1,shared,July 2017,10,10,1,1,1,1,1.000000,July 2017,1.000000,April 2017,0.000000,1.0000,0.0000,477,143
+57,0,2,shared,Price Of Gold,9,9,1,1,1,1,1.000000,Price Of Gold,1.000000,Turing Events (3 July 2017),0.000000,1.0000,0.0000,512,159
+57,0,3,shared,drop columns,9,9,1,0,4,1,0.040000,get the data,0.420000,get series,0.370000,0.3400,1.8705,445,92
+57,0,4,shared,then,7,7,1,0,2,1,0.130000,preview,0.720000,then,0.130000,0.6700,1.4444,437,75
+57,0,5,shared,get the data,9,9,1,1,1,1,0.420000,get the data,0.420000,get series,0.270000,0.3400,2.1017,454,92
+58,0,0,shared,by date,2,2,1,1,1,1,0.860000,by date,0.860000,by tag,0.140000,0.7200,0.5842,391,35
+58,0,1,shared,July 2017,10,10,1,1,1,1,1.000000,July 2017,1.000000,April 2017,0.000000,1.0000,0.0000,491,143
+58,0,2,shared,Exchange rate of GBP to USD,9,9,1,1,1,1,1.000000,Exchange rate of GBP to USD,1.000000,Turing Events (3 July 2017),0.000000,1.0000,0.0000,526,162
+58,0,3,shared,drop columns,9,9,1,0,7,2,0.010000,get the data,0.310000,get series,0.260000,0.2300,2.2645,462,92
+58,0,4,shared,then,4,4,1,0,3,1,0.200000,preview,0.450000,drop MMM YYYY,0.290000,0.2600,1.7442,433,51
+58,0,5,shared,get the data,9,9,1,0,2,1,0.270000,filter data,0.300000,get the data,0.270000,0.2100,2.4458,471,91
+59,0,0,shared,by date,2,2,1,1,1,1,0.590000,by date,0.590000,by tag,0.410000,0.1800,0.9765,407,35
+59,0,1,shared,July 2017,10,10,1,1,1,1,1.000000,July 2017,1.000000,April 2017,0.000000,1.0000,0.0000,507,143
+59,0,2,shared,FTSE100 2009-2016,9,9,1,1,1,1,1.000000,FTSE100 2009-2016,1.000000,Turing Events (3 July 2017),0.000000,1.0000,0.0000,542,171
+59,0,3,shared,drop columns,9,9,1,0,5,1,0.020000,get the data,0.640000,get series,0.230000,0.5900,1.5473,487,92
+59,0,4,shared,then,8,8,1,0,3,3,0.010000,drop Low Price,0.910000,preview,0.060000,0.8800,0.5667,487,86
+59,0,5,shared,get the data,9,9,1,1,1,1,0.460000,get the data,0.460000,drop columns,0.220000,0.3900,2.1362,496,92
+60,0,0,shared,by date,2,2,1,1,1,1,0.900000,by date,0.900000,by tag,0.100000,0.8000,0.4690,373,35
+60,0,1,shared,July 2017,10,10,1,1,1,1,1.000000,July 2017,1.000000,April 2017,0.000000,1.0000,0.0000,473,143
+60,0,2,shared,Turing People (22 July),9,9,1,1,1,1,1.000000,Turing People (22 July),1.000000,Turing Events (3 July 2017),0.000000,1.0000,0.0000,508,164
+60,0,3,shared,group data,8,8,1,0,3,2,0.080000,get the data,0.670000,get series,0.100000,0.6200,1.6123,438,83
+60,0,4,shared,by Role,5,5,1,1,1,1,0.830000,by Role,0.830000,by Position,0.110000,0.7900,0.8920,422,58
+60,0,5,shared,count all,15,15,1,1,1,1,0.450000,count all,0.450000,count distinct Name,0.440000,0.4000,1.6104,516,157
+60,0,6,shared,then,10,10,1,0,4,1,0.030000,count distinct Name,0.680000,preview,0.160000,0.6500,1.4451,486,118
+60,0,7,shared,filter data,9,9,1,0,4,1,0.080000,get the data,0.460000,preview,0.270000,0.3900,2.0062,465,92
+60,0,8,shared,Role is not,7,7,1,0,4,1,0.080000,Role is,0.390000,Role contains,0.320000,0.2900,2.1992,462,81
+60,0,9,shared,Leadership,6,6,1,0,3,1,0.210000, Research Software Engineering,0.310000,preview,0.230000,0.1800,2.3525,458,71
+60,0,10,shared,then,14,14,1,0,2,1,0.240000,preview,0.400000,then,0.240000,0.3500,2.4976,541,154
+60,0,11,shared,get series,9,9,1,0,5,1,0.080000,get the data,0.360000,preview,0.270000,0.3000,2.3400,486,92
+60,0,12,shared,with key Role,3,3,1,0,3,1,0.120000,with key count,0.620000,preview,0.260000,0.4300,1.2999,450,45
+60,0,13,shared,and value count,3,3,1,0,2,1,0.320000,preview,0.500000,and value count,0.320000,0.2500,1.4713,456,43
+61,0,0,shared,by date,2,2,1,0,2,1,0.400000,by tag,0.600000,by date,0.400000,0.2000,0.9710,373,35
+61,0,1,shared,July 2017,10,10,1,1,1,1,1.000000,July 2017,1.000000,April 2017,0.000000,1.0000,0.0000,473,143
+61,0,2,shared,Turing YouTube Views (22 July),9,9,1,1,1,1,1.000000,Turing YouTube Views (22 July),1.000000,Turing Events (3 July 2017),0.000000,0.9900,0.0000,508,167
+61,0,3,shared,windowing,9,9,1,0,6,2,0.020000,get the data,0.380000,group data,0.270000,0.3000,2.0979,449,92
+61,0,4,shared,expanding by Date,105,105,1,0,8,98,0.000000,window by Views,0.630000,expanding by Views,0.300000,0.6200,1.3661,1618,1343
+61,0,5,shared,sum Views,206,206,1,1,1,1,0.990000,sum Views,0.990000,max Views,0.010000,0.9800,0.0808,2408,2217
+61,0,6,shared,then,202,202,1,0,2,1,0.030000,preview,0.960000,then,0.030000,0.9500,0.2747,2385,2184
+61,0,7,shared,get series,9,9,1,0,4,1,0.120000,get the data,0.370000,preview,0.250000,0.3000,2.3315,472,92
+61,0,8,shared,with key last Date,3,3,1,0,3,1,0.250000,preview,0.400000,with key Views,0.350000,0.1100,1.5589,437,44
+61,0,9,shared,and value Views,3,3,1,1,1,1,0.520000,and value Views,0.520000,and value last Date,0.340000,0.2700,1.4169,444,46
+62,0,0,shared,by date,2,2,1,1,1,1,0.900000,by date,0.900000,by tag,0.100000,0.8000,0.4690,385,35
+62,0,1,shared,July 2017,10,10,1,1,1,1,1.000000,July 2017,1.000000,April 2017,0.000000,1.0000,0.0000,485,143
+62,0,2,shared,Turing People (23 July),9,9,1,1,1,1,1.000000,Turing People (23 July),1.000000,Turing Events (3 July 2017),0.000000,1.0000,0.0000,520,164
+62,0,3,shared,group data,8,8,1,0,3,2,0.060000,get the data,0.730000,get series,0.080000,0.7000,1.4590,450,83
+62,0,4,shared,by Role,5,5,1,1,1,1,0.810000,by Role,0.810000,by Position,0.110000,0.7600,0.9729,434,58
+62,0,5,shared,count all,15,15,1,0,2,1,0.380000,count distinct Name,0.470000,count all,0.380000,0.4200,1.7478,528,158
+62,0,6,shared,then,10,10,1,0,4,1,0.040000,count distinct Name,0.710000,preview,0.160000,0.6700,1.3824,498,118
+62,0,7,shared,filter data,9,9,1,0,4,1,0.050000,get the data,0.510000,preview,0.260000,0.4600,1.9922,477,92
+62,0,8,shared,Role is not,7,7,1,0,4,1,0.080000,Role is,0.420000,Role contains,0.180000,0.3300,2.3371,474,81
+62,0,9,shared,Leadership,6,6,1,0,3,1,0.220000, Research Software Engineering,0.280000,Turing Fellow,0.240000,0.1400,2.2264,471,72
+62,0,10,shared,then,14,14,1,0,2,1,0.260000,preview,0.400000,then,0.260000,0.3500,2.4341,553,154
+62,0,11,shared,get series,9,9,1,0,5,1,0.060000,group data,0.280000,preview,0.280000,0.2000,2.2692,498,90
+62,0,12,shared,with key Role,3,3,1,0,3,1,0.120000,with key count,0.590000,preview,0.290000,0.3800,1.3341,462,45
+62,0,13,shared,and value count,3,3,1,1,1,2,0.390000,preview,0.390000,and value count,0.390000,0.1000,1.5402,468,45
+63,0,0,shared,by date,2,2,1,1,1,1,0.560000,by date,0.560000,by tag,0.440000,0.1300,0.9896,382,35
+63,0,1,shared,August 2017,10,10,1,1,1,1,1.000000,August 2017,1.000000,April 2017,0.000000,0.9900,0.0000,482,143
+63,0,2,shared,FTSE100 (2012-2017),1,1,0,1,,,,,,,,,,0,0
+63,0,3,shared,windowing,9,9,1,1,1,1,0.610000,windowing,0.610000,get series,0.310000,0.5700,1.3352,463,92
+63,0,4,shared,window by Date(50),15,15,1,0,4,1,0.020000,expanding by Close,0.480000,window by Close,0.410000,0.4400,1.5500,540,171
+63,0,5,shared,last Date,28,28,1,0,3,26,0.000000,mean Close,0.990000,mean Adj Close,0.010000,0.9900,0.0808,611,246
+63,0,6,shared,mean Open,26,26,1,0,3,24,0.000000,mean Close,0.990000,mean Adj Close,0.010000,0.9900,0.0808,601,229
+63,0,7,shared,mean Close,22,22,1,1,1,1,1.000000,mean Close,1.000000,preview,0.000000,0.9900,0.0000,578,197
+63,0,8,shared,then,18,18,1,0,3,1,0.050000,mean Adj Close,0.670000,preview,0.230000,0.6400,1.3755,555,166
+63,0,9,shared,get series,9,9,1,0,2,2,0.220000,get the data,0.320000,drop columns,0.220000,0.2300,2.5066,494,92
+63,0,10,shared,with key last Date,4,4,1,0,2,1,0.100000,with key Close,0.830000,with key last Date,0.100000,0.7800,0.8653,467,55
+63,0,11,shared,and value Close,4,4,1,1,1,1,0.850000,and value Close,0.850000,preview,0.090000,0.7900,0.7945,474,55
+64,0,0,worldbank,byCountry,2,2,1,1,1,1,0.870000,byCountry,0.870000,byYear,0.130000,0.7400,0.5574,361,38
+64,0,1,worldbank,United States,254,254,1,1,1,1,1.000000,United States,1.000000,Arab World,0.000000,1.0000,0.0000,2494,2397
+64,0,2,worldbank,Health,22,22,1,1,1,1,0.950000,Health,0.950000,Gender,0.030000,0.9400,0.3349,524,209
+64,0,3,worldbank,"Mortality rate, adult, male (per 1,000 male adults)",123,123,1,1,1,1,0.990000,"Mortality rate, adult, male (per 1,000 male adults)",0.990000,"Death rate, crude (per 1,000 people)",0.010000,0.9800,0.0808,2643,2339
+64,0,4,worldbank,map(fun x -> x / 1000),26,26,1,0,6,2,0.060000,append,0.210000,preview,0.150000,0.1900,3.7209,561,225
+64,1,0,worldbank,byCountry,2,2,1,1,1,1,0.890000,byCountry,0.890000,byYear,0.110000,0.7700,0.4999,361,38
+64,1,1,worldbank,United States,254,254,1,1,1,1,1.000000,United States,1.000000,Arab World,0.000000,1.0000,0.0000,2494,2397
+64,1,2,worldbank,Health,22,22,1,1,1,1,0.910000,Health,0.910000,Gender,0.070000,0.9000,0.5052,524,209
+64,1,3,worldbank,"Mortality rate, adult, female (per 1,000 female adults)",123,123,1,1,1,1,0.980000,"Mortality rate, adult, female (per 1,000 female adults)",0.980000,"Mortality rate, adult, male (per 1,000 male adults)",0.010000,0.9800,0.1614,2643,2339
+64,1,4,worldbank,map(fun x -> x / 1000),26,26,1,0,5,1,0.080000,preview,0.220000,setProperties,0.120000,0.1800,3.7637,561,225
+65,0,0,expenditure,byYear,2,2,1,0,2,1,0.060000,byService,0.940000,byYear,0.060000,0.8800,0.3274,362,38
+65,0,1,expenditure,2015,17,17,1,0,7,2,0.060000,2010,0.230000,2012,0.090000,0.1900,3.6952,504,191
+65,0,2,expenditure,inTermsOf,3,3,1,0,3,1,0.020000,byService,0.940000,byAccount,0.040000,0.9100,0.3825,382,47
+65,0,3,expenditure,GDP,3,3,1,0,2,1,0.150000,Nominal,0.780000,GDP,0.150000,0.6700,0.9587,383,41
+65,0,4,expenditure,sortValues(reverse=true),26,26,1,0,2,1,0.100000,take,0.770000,sortValues,0.100000,0.7500,1.3987,549,225
+66,0,0,worldbank,byCountry,2,2,1,1,1,1,0.970000,byCountry,0.970000,byYear,0.030000,0.9500,0.1944,370,38
+66,0,1,worldbank,France,254,254,1,1,1,1,0.990000,France,0.990000,Europe & Central Asia (all income levels),0.010000,0.9800,0.0808,2503,2396
+66,0,2,worldbank,Education,22,22,1,1,1,1,0.990000,Education,0.990000,Social Development,0.010000,0.9900,0.0808,532,209
+66,0,3,worldbank,"Enrolment in tertiary education per 100,000 inhabitants, both sexes",255,1331,1,1,1,1,0.650000,"Enrolment in tertiary education per 100,000 inhabitants, both sexes",0.650000,"Enrolment in tertiary education, ISCED 5 programmes, both sexes (number)",0.230000,0.6400,1.4625,5762,5646
+66,0,4,worldbank,"setProperties(seriesName=""France"")",26,26,1,0,5,1,0.070000,append,0.250000,preview,0.190000,0.2100,3.3751,570,225
+66,1,0,worldbank,byCountry,2,2,1,1,1,1,0.970000,byCountry,0.970000,byYear,0.030000,0.9300,0.1944,370,38
+66,1,1,worldbank,Denmark,254,254,1,1,1,1,1.000000,Denmark,1.000000,Arab World,0.000000,0.9900,0.0000,2503,2397
+66,1,2,worldbank,Education,22,22,1,1,1,1,0.990000,Education,0.990000,Social Development,0.010000,0.9900,0.0808,533,209
+66,1,3,worldbank,"Enrolment in tertiary education per 100,000 inhabitants, both sexes",255,1331,1,1,1,1,0.890000,"Enrolment in tertiary education per 100,000 inhabitants, both sexes",0.890000,"Enrolment in tertiary education, all programmes, female (number)",0.060000,0.8800,0.6854,5552,5412
+66,1,4,worldbank,"setProperties(seriesName=""Denmark"")",26,26,1,0,5,2,0.050000,append,0.230000,preview,0.210000,0.1900,3.3430,571,225
+66,2,0,worldbank,byCountry,2,2,1,1,1,1,0.980000,byCountry,0.980000,byYear,0.020000,0.9500,0.1414,372,38
+66,2,1,worldbank,United Kingdom,254,254,1,1,1,1,0.990000,United Kingdom,0.990000,Europe & Central Asia (all income levels),0.010000,0.9800,0.0808,2505,2397
+66,2,2,worldbank,Education,22,22,1,1,1,1,0.990000,Education,0.990000,Social Development,0.010000,0.9800,0.0808,535,209
+66,2,3,worldbank,"Enrolment in tertiary education per 100,000 inhabitants, both sexes",255,1331,1,1,1,1,0.940000,"Enrolment in tertiary education per 100,000 inhabitants, both sexes",0.940000,"Gross enrolment ratio, upper secondary, both sexes (%)",0.020000,0.9300,0.3761,5748,5614
+66,2,4,worldbank,"setProperties(seriesName=""United Kingdom"")",26,26,1,0,5,1,0.050000,append,0.350000,preview,0.160000,0.3100,3.0532,573,225
+67,0,0,olympics,group data,9,9,1,0,2,1,0.360000,get the data,0.550000,group data,0.360000,0.4800,1.3629,404,92
+67,0,1,olympics,by Year,13,13,1,1,1,1,0.910000,by Year,0.910000,by Team,0.080000,0.8900,0.4818,436,123
+67,0,2,olympics,count distinct Team,43,43,1,1,1,1,1.000000,count distinct Team,1.000000,preview,0.000000,0.9900,0.0000,696,409
+67,0,3,olympics,then,29,29,1,0,4,1,0.060000,preview,0.400000,count distinct Games,0.250000,0.3700,2.4891,598,289
+67,0,4,olympics,sort data,9,9,1,0,4,1,0.090000,get the data,0.380000,preview,0.330000,0.2900,1.9848,423,92
+67,0,5,olympics,by Year,6,6,1,0,4,1,0.060000,preview,0.450000,by Year descending,0.380000,0.3300,1.6427,407,66
+67,0,6,olympics,then,4,4,1,0,2,1,0.180000,preview,0.810000,then,0.180000,0.7500,0.7580,399,51
+67,0,7,olympics,get series,9,9,1,0,3,1,0.180000,preview,0.440000,get the data,0.340000,0.3600,1.7414,437,90
+67,0,8,olympics,with key Year,3,3,1,1,1,1,0.740000,with key Year,0.740000,preview,0.220000,0.6100,0.9878,401,45
+67,0,9,olympics,and value Team,3,3,1,0,2,1,0.270000,preview,0.480000,and value Team,0.270000,0.2200,1.5183,407,43
+68,0,0,shared,by date,2,2,1,0,2,1,0.330000,by tag,0.670000,by date,0.330000,0.3400,0.9149,384,35
+68,0,1,shared,July 2017,10,10,1,1,1,1,1.000000,July 2017,1.000000,April 2017,0.000000,1.0000,0.0000,484,143
+68,0,2,shared,Turing People (23 July),9,9,1,1,1,1,1.000000,Turing People (23 July),1.000000,Turing Events (3 July 2017),0.000000,1.0000,0.0000,519,164
+68,0,3,shared,filter data,8,8,1,0,4,1,0.040000,group data,0.580000,get the data,0.280000,0.5100,1.6365,449,82
+68,0,4,shared,Position is,13,13,1,0,5,1,0.070000,Role is,0.590000,Role contains,0.100000,0.5500,2.0538,493,126
+68,0,5,shared,Turing Fellow,19,19,1,1,1,1,1.000000,Turing Fellow,1.000000,preview,0.000000,1.0000,0.0000,563,198
+68,0,6,shared,then,26,26,1,0,2,1,0.340000,preview,0.360000,then,0.340000,0.3300,2.3129,622,256
+68,0,7,shared,group data,8,8,1,1,1,1,1.000000,group data,1.000000,preview,0.000000,0.9900,0.0000,469,82
+68,0,8,shared,by University,5,5,1,1,1,1,1.000000,by University,1.000000,preview,0.000000,0.9900,0.0000,453,58
+68,0,9,shared,count all,15,15,1,0,2,1,0.470000,count distinct Name,0.480000,count all,0.470000,0.4400,1.3324,547,158
+68,0,10,shared,then,10,10,1,0,3,1,0.210000,count distinct Name,0.340000,preview,0.270000,0.2600,2.1549,517,118
+68,0,11,shared,get series,9,9,1,0,4,1,0.150000,get the data,0.270000,preview,0.250000,0.1800,2.2726,496,92
+68,0,12,shared,with key University,3,3,1,0,2,1,0.320000,with key count,0.470000,with key University,0.320000,0.2100,1.5108,460,45
+68,0,13,shared,and value count,3,3,1,1,1,1,0.480000,and value count,0.480000,preview,0.340000,0.2200,1.4828,466,45
+69,0,0,worldbank,byCountry,2,2,1,1,1,1,0.900000,byCountry,0.900000,byYear,0.100000,0.8100,0.4690,366,38
+69,0,1,worldbank,United States,254,254,1,1,1,1,1.000000,United States,1.000000,Arab World,0.000000,1.0000,0.0000,2499,2397
+69,0,2,worldbank,Climate Change,22,22,1,1,1,1,0.550000,Climate Change,0.550000,Environment,0.360000,0.5200,1.3864,529,210
+69,0,3,worldbank,CO2 emissions (metric tons per capita),67,67,1,0,2,1,0.010000,CO2 emissions (kt),0.990000,CO2 emissions (metric tons per capita),0.010000,0.9800,0.0808,1537,1200
+70,0,0,olympics,group data,9,9,1,0,2,1,0.340000,get the data,0.600000,group data,0.340000,0.5500,1.3300,409,92
+70,0,1,olympics,by Athlete,13,13,1,1,1,1,0.770000,by Athlete,0.770000,by Gold,0.140000,0.7400,1.0001,441,124
+70,0,2,olympics,sum Gold,43,43,1,1,1,1,0.670000,sum Gold,0.670000,count distinct Gold,0.110000,0.6600,1.6308,702,408
+70,0,3,olympics,then,28,28,1,0,3,1,0.080000,preview,0.670000,count all,0.100000,0.6500,1.8209,600,285
+70,0,4,olympics,sort data,9,9,1,1,1,1,0.560000,sort data,0.560000,get the data,0.160000,0.5100,2.0361,428,91
+70,0,5,olympics,by Gold descending,6,6,1,1,1,1,0.580000,by Gold descending,0.580000,preview,0.220000,0.5100,1.7486,414,70
+70,0,6,olympics,then,4,4,1,0,2,1,0.170000,preview,0.810000,then,0.170000,0.7500,0.8137,407,53
+70,0,7,olympics,paging,9,9,1,0,5,4,0.010000,get the data,0.370000,preview,0.330000,0.2900,2.0885,443,92
+70,0,8,olympics,take(6),4,4,1,0,2,1,0.330000,preview,0.430000,take,0.330000,0.2500,1.6760,408,46
+71,0,0,worldbank,byCountry,2,2,1,1,1,1,0.970000,byCountry,0.970000,byYear,0.030000,0.9400,0.1944,375,38
+71,0,1,worldbank,France,254,254,1,1,1,1,0.970000,France,0.970000,Brazil,0.020000,0.9600,0.2219,2508,2396
+71,0,2,worldbank,Education,22,22,1,1,1,1,0.990000,Education,0.990000,Social Development,0.010000,0.9800,0.0808,537,209
+71,0,3,worldbank,"Enrolment in tertiary education per 100,000 inhabitants, both sexes",255,1331,1,1,1,1,0.570000,"Enrolment in tertiary education per 100,000 inhabitants, both sexes",0.570000,"Enrolment in tertiary education, all programmes, both sexes (number)",0.260000,0.5600,1.7106,6091,5960
+71,0,4,worldbank,"setProperties(seriesName=""France"")",26,26,1,0,5,2,0.050000,append,0.360000,preview,0.130000,0.3200,3.0919,575,225
+71,1,0,worldbank,byCountry,2,2,1,1,1,1,0.960000,byCountry,0.960000,byYear,0.040000,0.9300,0.2423,375,38
+71,1,1,worldbank,Denmark,254,254,1,1,1,1,0.940000,Denmark,0.940000,Brazil,0.030000,0.9300,0.3486,2508,2397
+71,1,2,worldbank,Education,22,22,1,1,1,1,0.990000,Education,0.990000,Social Development,0.010000,0.9800,0.0808,538,209
+71,1,3,worldbank,"Enrolment in tertiary education per 100,000 inhabitants, both sexes",255,1331,1,1,1,1,0.710000,"Enrolment in tertiary education per 100,000 inhabitants, both sexes",0.710000,"Gross enrolment ratio, tertiary, male (%)",0.140000,0.7000,1.4819,5623,5492
+71,1,4,worldbank,"setProperties(seriesName=""Denmark"")",26,26,1,0,5,1,0.070000,append,0.220000,preview,0.180000,0.1900,3.5234,576,225
+71,2,0,worldbank,byCountry,2,2,1,1,1,1,0.970000,byCountry,0.970000,byYear,0.030000,0.9300,0.1944,377,38
+71,2,1,worldbank,United Kingdom,254,254,1,1,1,1,0.840000,United Kingdom,0.840000,Brazil,0.090000,0.8300,0.7925,2510,2397
+71,2,2,worldbank,Education,22,22,1,1,1,1,0.990000,Education,0.990000,Social Development,0.010000,0.9800,0.0808,540,209
+71,2,3,worldbank,"Enrolment in tertiary education per 100,000 inhabitants, both sexes",255,1331,1,0,3,1,0.010000,"Gross enrolment ratio, tertiary, both sexes (%)",0.820000,"Enrolment in tertiary education, all programmes, both sexes (number)",0.160000,0.8100,0.7242,5379,5237
+71,2,4,worldbank,"setProperties(seriesName=""United Kingdom"")",26,26,1,0,5,1,0.050000,append,0.430000,preview,0.140000,0.4000,2.9458,578,225
+71,3,0,worldbank,byCountry,2,2,1,1,1,1,0.960000,byCountry,0.960000,byYear,0.040000,0.9200,0.2423,375,38
+71,3,1,worldbank,Brazil,254,254,1,1,1,1,1.000000,Brazil,1.000000,Arab World,0.000000,0.9900,0.0000,2508,2396
+71,3,2,worldbank,Education,22,22,1,1,1,1,0.990000,Education,0.990000,Social Development,0.010000,0.9800,0.0808,537,209
+71,3,3,worldbank,"Enrolment in tertiary education per 100,000 inhabitants, both sexes",255,1331,1,1,1,1,0.870000,"Enrolment in tertiary education per 100,000 inhabitants, both sexes",0.870000,"Gross enrolment ratio, tertiary, gender parity index (GPI)",0.110000,0.8600,0.6580,5663,5530
+71,3,4,worldbank,"setProperties(seriesName=""Brazil"")",26,26,1,0,5,1,0.070000,preview,0.240000,last,0.180000,0.2000,3.1537,575,225
+72,0,0,shared,by date,2,2,1,0,2,1,0.110000,by tag,0.890000,by date,0.110000,0.7800,0.4999,370,35
+72,0,1,shared,October 2017,10,10,1,1,1,1,1.000000,October 2017,1.000000,April 2017,0.000000,1.0000,0.0000,470,143
+72,0,2,shared,"Trees in the City of Linz, Austria",2,2,1,1,1,1,1.000000,"Trees in the City of Linz, Austria",1.000000,Library counts by library service,0.000000,1.0000,0.0000,393,52
+72,0,3,shared,drop columns,9,9,1,0,5,5,0.000000,group data,0.870000,get the data,0.110000,0.8600,0.6580,444,91
+72,0,4,shared,then,16,16,1,0,2,1,0.130000,drop BaumNr,0.160000,then,0.130000,0.1100,3.7396,515,166
+72,0,5,shared,group data,9,9,1,1,1,1,0.910000,group data,0.910000,drop columns,0.060000,0.8800,0.5467,453,91
+72,0,6,shared,by Art,15,15,1,0,2,1,0.110000,by Typ,0.800000,by Art,0.110000,0.7800,1.0032,518,157
+72,0,7,shared,average Flaeche,53,53,1,0,10,44,0.000000,count distinct BaumNr,0.550000,count distinct Art,0.200000,0.5300,1.9127,876,551
+72,0,8,shared,average Hoehe,36,36,1,0,11,26,0.000000,count distinct Typ,0.300000,count distinct BaumNr,0.250000,0.2700,2.6270,738,387
+72,0,9,shared,count all,33,33,1,0,5,1,0.110000,count distinct BaumNr,0.380000,count distinct Art,0.180000,0.3500,2.4347,719,361
+72,0,10,shared,then,32,32,1,0,6,2,0.030000,count distinct Typ,0.340000,count distinct Gattung,0.180000,0.3000,2.8192,717,351
+72,0,11,shared,get series,9,9,1,0,4,2,0.040000,group data,0.490000,preview,0.270000,0.4200,2.0007,485,91
+72,0,12,shared,with key Art,5,5,1,1,1,1,0.590000,with key Art,0.590000,with key count,0.280000,0.4700,1.4748,468,66
+72,0,13,shared,and value count,5,5,1,1,1,1,0.760000,and value count,0.760000,and value Art,0.140000,0.7000,1.1224,474,66
+73,0,0,shared,by date,2,2,1,1,1,1,0.770000,by date,0.770000,by tag,0.230000,0.5300,0.7780,357,35
+73,0,1,shared,October 2017,10,10,1,1,1,1,1.000000,October 2017,1.000000,April 2017,0.000000,1.0000,0.0000,457,143
+73,0,2,shared,Library counts by library service,2,2,1,1,1,1,1.000000,Library counts by library service,1.000000,"Trees in the City of Linz, Austria",0.000000,1.0000,0.0000,380,48
+73,0,3,shared,group data,8,8,1,1,1,1,0.410000,group data,0.410000,get the data,0.390000,0.3200,1.7888,419,82
+73,0,4,shared,by Library service,7,7,1,1,1,1,1.000000,by Library service,1.000000,preview,0.000000,1.0000,0.0000,425,83
+73,0,5,shared,count distinct Library name,21,21,1,1,1,1,0.450000,count distinct Library name,0.450000,count all,0.390000,0.4100,1.7107,574,241
+73,0,6,shared,then,13,13,1,0,5,1,0.070000,preview,0.570000,count all,0.110000,0.5300,2.0538,510,159
+73,0,7,shared,sort data,9,9,1,0,2,1,0.180000,get the data,0.590000,sort data,0.180000,0.5400,1.7619,449,92
+73,0,8,shared,by Library name descending,6,6,1,0,5,1,0.040000,by Library service descending,0.710000,preview,0.120000,0.6500,1.4571,437,73
+73,0,9,shared,then,4,4,1,0,2,1,0.090000,preview,0.870000,then,0.090000,0.8200,0.7132,429,53
+73,0,10,shared,paging,9,9,1,0,5,3,0.010000,get the data,0.680000,preview,0.170000,0.6400,1.4895,465,92
+73,0,11,shared,take(20),4,4,1,1,1,1,0.430000,take,0.430000,preview,0.390000,0.2300,1.6362,430,46
+75,0,0,shared,by date,2,2,1,0,2,1,0.470000,by tag,0.530000,by date,0.470000,0.0500,0.9974,359,35
+75,0,1,shared,April 2018,10,10,1,1,1,1,1.000000,April 2018,1.000000,April 2017,0.000000,1.0000,0.0000,459,143
+75,0,2,shared,Gender pay gap,1,1,0,1,,,,,,,,,,0,0
+75,0,3,shared,drop columns,9,9,1,0,5,2,0.020000,get the data,0.490000,get series,0.230000,0.4300,1.8890,427,92
+75,0,4,shared,drop Address,24,24,1,0,12,10,0.010000,drop EmployerName,0.240000,drop CompanyNumber,0.160000,0.2000,3.5454,651,328
+75,0,5,shared,drop CompanyLinkToGPGInfo,23,23,1,0,5,3,0.060000,drop EmployerName,0.240000,drop CompanyNumber,0.200000,0.2000,3.4255,649,320
+75,0,6,shared,drop CompanyNumber,22,22,1,0,2,1,0.180000,preview,0.250000,drop CompanyNumber,0.180000,0.2300,3.4151,647,302
+75,0,7,shared,drop SicCodes,21,21,1,0,5,3,0.060000,drop EmployerName,0.210000,preview,0.180000,0.1800,3.5149,645,295
+75,0,8,shared,then,20,20,1,0,7,1,0.050000,preview,0.230000,drop EmployerName,0.170000,0.1900,3.3805,643,282
+75,0,9,shared,sort data,9,9,1,0,7,1,0.010000,group data,0.300000,drop columns,0.200000,0.2000,2.4448,466,91
+75,0,10,shared,by DiffMeanHourlyPercent descending,38,38,1,1,1,1,0.660000,by DiffMeanHourlyPercent descending,0.660000,by DiffMeanHourlyPercent,0.270000,0.6400,1.2843,902,560
+75,0,11,shared,then,36,36,1,0,2,1,0.110000,preview,0.690000,then,0.110000,0.6700,1.6469,919,551
+75,0,12,shared,get series,9,9,1,0,4,1,0.070000,get the data,0.370000,preview,0.310000,0.2800,2.3102,489,92
+75,0,13,shared,with key CurrentName,19,19,1,0,3,1,0.100000,with key DiffMeanHourlyPercent,0.630000,with key EmployerName,0.170000,0.6000,1.5658,687,303
+75,0,14,shared,and value DiffMeanHourlyPercent,19,19,1,1,1,1,0.430000,and value DiffMeanHourlyPercent,0.430000,and value CurrentName,0.290000,0.3900,1.7208,695,303
+75,0,15,shared,take(5),26,26,1,0,2,1,0.180000,preview,0.510000,take,0.180000,0.4700,2.5577,634,225
+76,0,0,olympics,group data,9,9,1,0,5,5,0.000000,get the data,0.890000,get series,0.070000,0.8600,0.6364,379,92
+76,0,1,olympics,by Team,13,13,1,0,3,2,0.100000,preview,0.330000,by Athlete,0.120000,0.2600,3.0014,411,122
+76,0,2,olympics,sum Gold,43,43,1,0,9,12,0.010000,count all,0.360000,then,0.130000,0.3300,3.1779,671,408
+76,0,3,olympics,then,28,28,1,0,4,1,0.020000,sum Silver,0.640000,sum Bronze,0.150000,0.6100,1.8173,569,286
+76,0,4,olympics,sort data,9,9,1,1,1,1,0.450000,sort data,0.450000,get the data,0.290000,0.3800,2.1870,397,91
+76,0,5,olympics,by Gold descending,6,6,1,0,2,1,0.430000,by Gold,0.490000,by Gold descending,0.430000,0.3900,1.4718,381,67
+76,0,6,olympics,then,4,4,1,0,2,1,0.140000,preview,0.830000,then,0.140000,0.7700,0.7995,374,51
+76,0,7,olympics,paging,9,9,1,0,4,2,0.070000,get the data,0.490000,preview,0.160000,0.4300,2.2666,412,92
+76,0,8,olympics,take(10),4,4,1,1,1,1,0.430000,take,0.430000,then,0.260000,0.2400,1.7724,377,46
+77,0,0,shared,by date,2,2,1,0,2,1,0.410000,by tag,0.590000,by date,0.410000,0.1900,0.9765,377,35
+77,0,1,shared,July 2018,10,10,1,1,1,1,1.000000,July 2018,1.000000,April 2017,0.000000,1.0000,0.0000,477,143
+77,0,2,shared,US China trade war,1,1,0,1,,,,,,,,,,0,0
+77,0,3,shared,get series,9,9,1,0,2,1,0.140000,get the data,0.670000,get series,0.140000,0.6300,1.5164,446,92
+77,0,4,shared,with key Information,3,3,1,1,1,1,0.490000,with key Information,0.490000,preview,0.390000,0.2400,1.4011,410,45
+77,0,5,shared,and value Value,3,3,1,0,3,1,0.250000,and value Information,0.410000,preview,0.340000,0.1200,1.5566,416,45
+77,0,6,shared,reverse(),26,26,1,0,22,5,0.000000,filter,0.350000,preview,0.230000,0.3400,3.1209,581,225
+78,0,0,shared,by date,2,2,1,1,1,1,0.690000,by date,0.690000,by tag,0.310000,0.3900,0.8932,379,35
+78,0,1,shared,August 2018,10,10,1,1,1,1,1.000000,August 2018,1.000000,April 2017,0.000000,0.9900,0.0000,479,143
+78,0,2,shared,Imports from USA to China in 2016,3,3,1,1,1,1,1.000000,Imports from USA to China in 2016,1.000000,Imports from China to USA in 2016,0.000000,1.0000,0.0000,421,74
+78,0,3,shared,get series,9,9,1,0,2,1,0.140000,get the data,0.650000,get series,0.140000,0.5900,1.6398,455,92
+78,0,4,shared,with key Category,3,3,1,0,3,1,0.150000,with key Total,0.500000,preview,0.350000,0.2600,1.4406,419,45
+78,0,5,shared,and value Total,3,3,1,0,2,1,0.320000,and value Category,0.370000,and value Total,0.320000,0.0600,1.5806,425,45
+79,0,0,shared,by date,2,2,1,1,1,1,0.690000,by date,0.690000,by tag,0.310000,0.3900,0.8932,376,35
+79,0,1,shared,August 2018,10,10,1,1,1,1,1.000000,August 2018,1.000000,April 2017,0.000000,0.9900,0.0000,476,143
+79,0,2,shared,Imports from China to USA in 2016,3,3,1,1,1,1,1.000000,Imports from China to USA in 2016,1.000000,Imports from USA to China in 2016,0.000000,1.0000,0.0000,418,74
+79,0,3,shared,get series,9,9,1,0,2,1,0.210000,get the data,0.590000,get series,0.210000,0.5500,1.7693,452,92
+79,0,4,shared,with key Category,3,3,1,0,3,1,0.190000,preview,0.420000,with key Value,0.390000,0.1400,1.5107,416,43
+79,0,5,shared,and value Value,3,3,1,0,2,1,0.240000,and value Category,0.570000,and value Value,0.240000,0.3600,1.4116,422,45
+80,0,0,shared,by date,2,2,1,0,2,1,0.450000,by tag,0.550000,by date,0.450000,0.0900,0.9928,383,35
+80,0,1,shared,August 2018,10,10,1,1,1,1,0.980000,August 2018,0.980000,July 2018,0.020000,0.9800,0.1414,483,143
+80,0,2,shared,Trade war between US and China,3,3,1,1,1,1,0.830000,Trade war between US and China,0.830000,Imports from China to USA in 2016,0.160000,0.7500,0.7126,425,69
+80,0,3,shared,get series,9,9,1,0,2,1,0.170000,get the data,0.630000,get series,0.170000,0.5700,1.6558,454,92
+80,0,4,shared,with key Information,3,3,1,1,1,1,0.530000,with key Information,0.530000,preview,0.320000,0.3100,1.4220,418,45
+80,0,5,shared,and value Value,3,3,1,0,2,2,0.250000,and value Information,0.500000,preview,0.250000,0.2500,1.5000,424,45
+80,0,6,shared,reverse(),26,26,1,0,19,8,0.000000,filter,0.400000,preview,0.250000,0.3700,2.7862,589,225
+81,0,0,expenditure,byYear,2,2,1,0,2,1,0.110000,byService,0.890000,byYear,0.110000,0.7800,0.4999,370,38
+81,0,1,expenditure,2015,17,17,1,0,2,3,0.100000,2010,0.220000,2000,0.100000,0.1900,3.6624,512,191
+81,0,2,expenditure,inTermsOf,3,3,1,0,2,1,0.110000,byService,0.880000,inTermsOf,0.110000,0.8300,0.5790,390,47
+81,0,3,expenditure,GDP,3,3,1,1,1,1,0.950000,GDP,0.950000,Nominal,0.030000,0.9300,0.3349,391,40
+81,0,4,expenditure,sortValues(reverse=true),26,26,1,0,4,3,0.070000,take,0.410000,filter,0.120000,0.3800,3.0135,557,225
+83,0,0,worldbank,byCountry,2,2,1,1,1,1,0.990000,byCountry,0.990000,byYear,0.010000,0.9700,0.0808,354,38
+83,0,1,worldbank,United States,254,254,1,1,1,1,0.730000,United States,0.730000,China,0.260000,0.7200,0.9032,2487,2397
+83,0,2,worldbank,Climate Change,22,22,1,0,2,1,0.450000,Environment,0.480000,Climate Change,0.450000,0.4500,1.3366,517,209
+83,0,3,worldbank,CO2 emissions (kt),67,67,1,1,1,1,0.960000,CO2 emissions (kt),0.960000,CO2 emissions (metric tons per capita),0.030000,0.9500,0.2747,1525,1200
+83,1,0,worldbank,byCountry,2,2,1,1,1,1,0.980000,byCountry,0.980000,byYear,0.020000,0.9600,0.1414,352,38
+83,1,1,worldbank,China,254,254,1,1,1,1,0.970000,China,0.970000,United States,0.030000,0.9700,0.1944,2485,2396
+83,1,2,worldbank,Climate Change,22,22,1,1,1,1,0.530000,Climate Change,0.530000,Environment,0.400000,0.5100,1.2968,514,210
+83,1,3,worldbank,CO2 emissions (kt),67,67,1,1,1,1,0.970000,CO2 emissions (kt),0.970000,CO2 emissions (metric tons per capita),0.020000,0.9600,0.2219,1522,1200
+84,0,0,shared,by date,2,2,1,0,2,1,0.450000,by tag,0.550000,by date,0.450000,0.1000,0.9928,374,35
+84,0,1,shared,March 2020,10,10,1,1,1,1,1.000000,March 2020,1.000000,April 2017,0.000000,1.0000,0.0000,474,143
+84,0,2,shared,Lords Travel Expenses,1,1,0,1,,,,,,,,,,0,0
+84,0,3,shared,filter data,9,9,1,0,4,1,0.100000,sort data,0.370000,group data,0.260000,0.2900,2.1410,443,91
+84,0,4,shared,County is,52,52,1,1,1,1,0.930000,County is,0.930000,Travel Costs is greater than,0.030000,0.9200,0.4285,987,673
+84,0,5,shared,Kent,118,118,1,1,1,1,1.000000,Kent,1.000000,preview,0.000000,1.0000,0.0000,1372,1114
+84,0,6,shared,then,104,104,1,1,1,1,0.320000,then,0.320000,and Travel Costs is greater than,0.270000,0.3000,2.5189,1688,1416
+84,0,7,shared,sort data,9,9,1,1,1,1,0.870000,sort data,0.870000,group data,0.120000,0.8400,0.6083,461,91
+84,0,8,shared,by Travel Costs descending,36,36,1,1,1,1,0.970000,by Travel Costs descending,0.970000,by Travel Costs,0.020000,0.9700,0.2219,764,418
+84,0,9,shared,then,34,34,1,0,2,1,0.260000,preview,0.670000,then,0.260000,0.6500,1.2435,786,428
+84,0,10,shared,paging,9,9,1,1,1,1,0.460000,paging,0.460000,windowing,0.270000,0.4000,2.0656,477,90
+84,0,11,shared,take(3),4,4,1,1,1,1,0.960000,take,0.960000,then,0.020000,0.9400,0.3023,442,46
+85,0,0,olympics,filter data,9,9,1,0,3,1,0.060000,get the data,0.760000,get series,0.160000,0.7300,1.1003,411,92
+85,0,1,olympics,Athlete is,37,37,1,1,1,1,0.430000,Athlete is,0.430000,Medal is,0.270000,0.4000,2.1972,657,362
+85,0,2,olympics,Michael Phelps,255,24300,1,1,1,1,1.000000,Michael Phelps,1.000000,Bogdan Dobrev,0.000000,1.0000,0.0000,2894,2811
+85,0,3,olympics,then,74,74,1,0,5,4,0.010000,and Medal is,0.780000,and Medal contains,0.110000,0.7600,1.2246,1022,752
+85,0,4,olympics,group data,9,9,1,0,4,1,0.020000,get the data,0.620000,get series,0.240000,0.5900,1.5466,431,92
+85,0,5,olympics,by Athlete,13,13,1,0,3,2,0.020000,by Gold,0.510000,by Medal,0.420000,0.4600,1.4461,464,123
+85,0,6,olympics,sum Gold,43,43,1,1,1,1,0.350000,sum Gold,0.350000,and Gold,0.300000,0.3200,2.1871,725,408
+85,0,7,olympics,then,28,28,1,0,2,1,0.230000,preview,0.560000,then,0.230000,0.5400,2.0488,623,285
+85,0,8,olympics,get series,9,9,1,0,5,1,0.040000,get the data,0.550000,preview,0.200000,0.4900,1.9881,451,92
+85,0,9,olympics,with key Athlete,3,3,1,0,2,1,0.400000,preview,0.410000,with key Athlete,0.400000,0.1200,1.5114,416,44
+85,0,10,olympics,and value Gold,3,3,1,0,2,1,0.250000,preview,0.580000,and value Gold,0.250000,0.3800,1.3904,423,44
+85,1,0,olympics,group data,9,9,1,0,5,1,0.020000,get the data,0.860000,get series,0.050000,0.8400,0.8536,413,92
+85,1,1,olympics,by Team,13,13,1,0,3,1,0.060000,by Gold,0.780000,by Medal,0.130000,0.7500,1.0851,445,123
+85,1,2,olympics,sum Gold,43,43,1,1,1,1,0.800000,sum Gold,0.800000,and Gold,0.100000,0.7800,1.0326,705,408
+85,1,3,olympics,then,28,28,1,0,2,1,0.130000,preview,0.660000,then,0.130000,0.6300,1.8619,603,285
+85,1,4,olympics,sort data,9,9,1,1,1,1,0.860000,sort data,0.860000,filter data,0.070000,0.8300,0.8047,431,91
+85,1,5,olympics,by Gold descending,6,6,1,1,1,1,0.750000,by Gold descending,0.750000,preview,0.100000,0.7100,1.2640,415,68
+85,1,6,olympics,then,4,4,1,0,2,1,0.250000,preview,0.740000,then,0.250000,0.6500,0.8879,408,51
+85,1,7,olympics,paging,9,9,1,0,5,1,0.050000,preview,0.330000,filter data,0.300000,0.2500,2.3040,446,90
+85,1,8,olympics,skip(42),4,4,1,0,4,1,0.100000,take,0.480000,preview,0.210000,0.3100,1.7861,411,46
+86,0,0,olympics,filter data,9,9,1,0,2,1,0.160000,get the data,0.790000,filter data,0.160000,0.7600,0.9439,433,92
+86,0,1,olympics,Athlete is,37,37,1,1,1,1,0.670000,Athlete is,0.670000,Medal is,0.180000,0.6500,1.5675,679,362
+86,0,2,olympics,Michael Phelps,255,24300,1,1,1,1,1.000000,Michael Phelps,1.000000,JONGH Juan De,0.000000,1.0000,0.0000,2961,2856
+86,0,3,olympics,then,74,74,1,0,3,1,0.020000,and Medal is,0.880000,and Medal contains,0.070000,0.8700,0.7430,1044,752
+86,0,4,olympics,group data,9,9,1,1,1,1,0.410000,group data,0.410000,get the data,0.220000,0.3500,2.2591,453,91
+86,0,5,olympics,by Athlete,13,13,1,0,3,1,0.020000,by Medal,0.620000,by Gold,0.320000,0.5800,1.3323,486,123
+86,0,6,olympics,sum Gold,43,43,1,1,1,1,0.690000,sum Gold,0.690000,and Gold,0.120000,0.6800,1.5172,747,408
+86,0,7,olympics,then,28,28,1,0,3,1,0.180000,preview,0.420000,sum Silver,0.220000,0.3900,2.3674,645,285
+86,0,8,olympics,get series,9,9,1,0,5,1,0.090000,get the data,0.440000,group data,0.140000,0.3600,2.3879,473,92
+86,0,9,olympics,with key Athlete,3,3,1,0,2,1,0.300000,preview,0.450000,with key Athlete,0.300000,0.1700,1.5395,438,44
+86,0,10,olympics,and value Gold,3,3,1,0,2,1,0.220000,preview,0.640000,and value Gold,0.220000,0.4500,1.2898,445,44
+86,1,0,olympics,group data,9,9,1,0,2,1,0.160000,get the data,0.800000,group data,0.160000,0.7700,0.9263,435,92
+86,1,1,olympics,by Team,13,13,1,0,5,1,0.010000,by Gold,0.710000,by Medal,0.220000,0.6700,1.1965,467,123
+86,1,2,olympics,sum Gold,43,43,1,1,1,1,0.730000,sum Gold,0.730000,and Gold,0.200000,0.7100,1.1933,727,408
+86,1,3,olympics,then,28,28,1,0,3,2,0.170000,preview,0.370000,sum Silver,0.210000,0.3300,2.4042,625,285
+86,1,4,olympics,sort data,9,9,1,1,1,1,0.640000,sort data,0.640000,filter data,0.130000,0.6000,1.7912,453,91
+86,1,5,olympics,by Gold descending,6,6,1,1,1,1,0.850000,by Gold descending,0.850000,then,0.080000,0.8300,0.8683,437,68
+86,1,6,olympics,then,4,4,1,1,1,2,0.480000,preview,0.480000,then,0.480000,0.3100,1.2347,430,51
+86,1,7,olympics,paging,9,9,1,0,7,1,0.030000,filter data,0.340000,get the data,0.270000,0.2600,2.5112,468,91
+86,1,8,olympics,skip(42),4,4,1,0,4,1,0.110000,then,0.390000,take,0.360000,0.1700,1.8078,433,46
+87,0,0,drWho,Character,9,9,1,1,1,1,0.660000,Character,0.660000,Episode,0.290000,0.6100,1.1982,406,81
+87,0,1,drWho,Doctor,169,169,1,1,1,1,0.540000,Doctor,0.540000,Master,0.140000,0.5300,1.9993,1705,1537
+87,0,2,drWho,ENEMY_OF,10,10,1,1,1,1,1.000000,ENEMY_OF,1.000000,get_properties,0.000000,0.9900,0.0000,435,106
+87,0,3,drWho,[any],147,147,1,0,2,1,0.150000,Dalek,0.770000,[any],0.150000,0.7600,1.0299,1513,1313
+87,0,4,drWho,APPEARED_IN,11,11,1,0,2,1,0.200000,ENEMY_OF,0.580000,APPEARED_IN,0.200000,0.5200,1.8054,456,116
+87,0,5,drWho,[any],255,440,1,0,2,1,0.240000,Dalek,0.550000,[any],0.240000,0.5400,1.5267,2550,2445
+87,0,6,drWho,explore_properties,11,11,1,0,5,1,0.070000,ENEMY_OF,0.310000,APPEARED_IN,0.290000,0.2300,2.3811,469,116
+87,0,7,drWho,explore,2,2,1,1,1,1,0.780000,explore,0.780000,preview,0.220000,0.5600,0.7602,403,34
+87,0,8,drWho,group data,8,8,1,1,1,1,0.720000,group data,0.720000,get the data,0.110000,0.6800,1.4481,450,82
+87,0,9,drWho,by 1-name,13,13,1,0,2,1,0.180000,by 2-name,0.230000,by 1-name,0.180000,0.1700,3.2028,520,154
+87,0,10,drWho,count distinct 2-name,39,39,1,0,5,2,0.040000,count all,0.280000,count distinct 1-name,0.230000,0.2500,3.2903,828,479
+87,0,11,drWho,then,25,25,1,0,5,1,0.030000,count distinct 1-name,0.570000,count distinct 2-episode,0.150000,0.5400,2.0718,699,331
+87,0,12,drWho,sort data,9,9,1,1,1,1,0.930000,sort data,0.930000,get the data,0.040000,0.9100,0.3960,482,91
+87,0,13,drWho,by 2-name descending,6,6,1,0,2,1,0.380000,by 1-name descending,0.490000,by 2-name descending,0.380000,0.3900,1.6558,474,78
+87,0,14,drWho,then,4,4,1,0,3,1,0.300000,and by 1-name descending,0.320000,preview,0.310000,0.0900,1.8395,465,55
+87,0,15,drWho,paging,9,9,1,0,3,1,0.110000,get the data,0.560000,windowing,0.150000,0.5000,2.0664,499,92
+87,0,16,drWho,take(7),4,4,1,1,1,1,0.420000,take,0.420000,then,0.290000,0.2400,1.7006,464,46
+90,0,0,worldbank,byCountry,2,2,1,1,1,1,0.970000,byCountry,0.970000,byYear,0.030000,0.9300,0.1944,358,38
+90,0,1,worldbank,United States,254,254,1,1,1,1,0.890000,United States,0.890000,China,0.110000,0.8800,0.4999,2491,2397
+90,0,2,worldbank,Climate Change,22,22,1,1,2,1,0.470000,Environment,0.480000,Climate Change,0.470000,0.4500,1.2724,521,210
+90,0,3,worldbank,CO2 emissions (kt),67,67,1,1,1,1,0.990000,CO2 emissions (kt),0.990000,CO2 emissions (metric tons per capita),0.010000,0.9900,0.0808,1529,1200
+90,1,0,worldbank,byCountry,2,2,1,1,1,1,0.970000,byCountry,0.970000,byYear,0.030000,0.9400,0.1944,356,38
+90,1,1,worldbank,China,254,254,1,1,1,1,0.970000,China,0.970000,United States,0.030000,0.9600,0.1944,2489,2396
+90,1,2,worldbank,Climate Change,22,22,1,0,2,1,0.420000,Environment,0.550000,Climate Change,0.420000,0.5200,1.1793,518,209
+90,1,3,worldbank,CO2 emissions (kt),67,67,1,1,1,1,0.990000,CO2 emissions (kt),0.990000,CO2 emissions (metric tons per capita),0.010000,0.9900,0.0808,1526,1200
